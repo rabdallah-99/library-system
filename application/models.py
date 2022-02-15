@@ -21,8 +21,8 @@ class login(db.Model):
     name = db.Column(db.String(50))
     password = db.Column(db.String(50))
    
-class books(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(40))
-    price = db.Column(db.Integer)
+#class Books(db.Model):
+#    id = db.Column(db.Integer, primary_key=True)
+#    name = db.Column(db.String(40))
+#    price = db.Column(db.Integer)
 

@@ -1,10 +1,13 @@
 from application import app, db
-from application.models import Games
+from flask import Flask, render_template, request
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
+from application.models import Category, Author, Borrower, login, Books
 #modify this file to suit your database and site layout
-@app.route('/add')
-def add():
-    new_game = Games(name="New Game")
-    db.session.add(new_game)
+@app.route('/category')
+def add_category():
+    new_category = Games(name="New Game")
+    db.session.add(new_category)
     db.session.commit()
     return "Added new game to database"
 
