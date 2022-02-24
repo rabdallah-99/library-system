@@ -13,7 +13,7 @@ class Borrower(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
     address = db.Column(db.String(50))
-    bdate = db.Column(Bdate)
+    bdate = db.Column(db.date)
     phone = db.Column(db.String(20))
 
 class Login(db.Model):
@@ -36,7 +36,7 @@ class Transaction(db.Model):
     book_id = db.Column(db.Integer)
     borrow_date = db.Column(db.Date)
     return_date = db.Column(db.Date)
-    status = db.Column (db.String(5))
+    status = db.Column(db.String(5))
 
 
 

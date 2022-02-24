@@ -2,9 +2,10 @@ CREATE DATABASE IF NOT EXISTS library;
 USE library;
 
 CREATE TABLE category(
-category_id int NOT NULL AUTO,
-categoy_name varchar(40)
-):
+category_id int NOT NULL AUTO_INCREMENT,
+category_name varchar(40),
+PRIMARY KEY(category_id)
+);
 
 CREATE TABLE author(
 author_id int NOT NULL AUTO_INCREMENT,
@@ -29,7 +30,7 @@ CREATE TABLE login(
 user_id int NOT NULL AUTO_INCREMENT,
 user_name varchar(50) NOT NULL,
 password varchar(50),
-PRIMARY KEY(user_id),
+PRIMARY KEY(user_id)
 );
 
 CREATE TABLE borrower(
@@ -47,13 +48,12 @@ borrower_id int NOT NULL ,
 book_id int NOT NULL ,
 borrow_date DATE,
 return_date DATE,
-status varchar(5)
-PRIMARY KEY(transaction_id)
+status varchar(5),
+PRIMARY KEY(transaction_id),
 FOREIGN KEY (book_id) REFERENCES books(book_id),
 FOREIGN KEY (borrower_id) REFERENCES borrower(borrower_id)
-
 );
 
 
-);
+
 
