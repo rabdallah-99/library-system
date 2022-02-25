@@ -1,38 +1,53 @@
-from application import app, db
 from flask import Flask, render_template, request
-from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
-from application.models import Category, Author, Borrower, login, Books
+from application import app, db
+from application.forms import AddCategory, AddAuthor, LogInForm, SignUpForm
+from application.models import Category, Author, Borrower, Login, Books
 #modify this file to suit your database and site layout
-@app.route('/category')
+@app.route('/category', methods=['GET', 'POST'])
 def add_category():
-    new_category = Games(name="New Game")
-    db.session.add(new_category)
-    db.session.commit()
-    return "Added new game to database"
+    form=AddCategory()
+    if form.validate_on_submit():
+        new_category = Category (category_id=0, category_name = form.name.data)
+        db.session.add(new_category)
+        db.session.commit()
+    return render_template('Category.html', title='Category', form = form)
+@app.route('/deletecategory',methods=['GET','POST'])
+def delete_category():
+    form=DeleteCategory()
+
+@app.route('/author', methods=['GET', 'POST'])
+def add_author():
+    form=AddAuthor()
+    if form.validate_on_submit():
+        new_author = Author(author_id=0, author_name=form.name.data)
+        db.session.add(new_author)
+        db.session.commit()
+    return render_template('author.html', title='Author', form = form)
 
 @app.route('/read')
-def read():
-    all_games = Games.query.all()
-    games_string = ""
-    for game in all_games:
-        games_string += "<br>"+ game.name
-    return games_string
+def readcategory():
 
-@app.route('/update/<name>')
-def update(name):
-    first_game = Games.query.first()
-    first_game.name = name
-    db.session.commit()
-    return first_game.name
+    all_category = Category.query.all()
+    category_string = ""
+    for category in all_category:
+        category_string += "<br>"+ category.category_name
+    return category_string
+@app.route('/read-author')
+def readauthor():
 
-@app.route('/count')
-def count():
-	number_of_games = Games.query.count()
-	return str(number_of_games)
-@app.route('/delete')
-def delete():
-	game_to_delete = Games.query.first()
-	db.session.delete(game_to_delete)
-	db.session.commit()	
-	return "Game deleted"
+    all_authors = Author.query.all()
+    author_string = ""
+    for author in all_authors:
+        author_string += "<br>"+ author.author_name
+    return  author_string
+# Route to home page
+@app.route('/')
+@app.route('/home')
+def home():
+
+    return render_template('home.html', title = 'Home')
+
+# Route to about page
+@app.route('/about')
+def about():
+    return render_template('about.html', title='About')

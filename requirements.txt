@@ -3,8 +3,10 @@ flask_sqlalchemy
 pymysql
 flask-wtf
 wtforms
+flask-mysql
 flask-bcrypt
 flask_login
+Cryptography
 flask_testing
 pytest
 pytest-cov

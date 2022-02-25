@@ -21,3 +21,20 @@ class LogInForm(FlaskForm):
         if bcrypt.check_password_hash(user.password, password.data):
             raise ValidationError('Incorrect password')
 
+# Class for signing up
+class SignUpForm(FlaskForm):
+    user = StringField('User Name',validators = [DataRequired(), Length(min=3, max=15)])
+
+    password = PasswordField('Password', validators=[DataRequired()])
+    confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField('Sign Up')
+
+class AddCategory(FlaskForm) :
+    name = StringField('Category Name', validators=[DataRequired()])
+    submit = SubmitField('Add Category')
+
+class AddAuthor(FlaskForm) :
+    name = StringField('Author Name',validators=[DataRequired()])
+    submit = SubmitField('Add Author')
+
+class DeleteCategory(FlaskForm) :

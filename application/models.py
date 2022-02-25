@@ -1,19 +1,19 @@
 from application import db
+from datetime import datetime
 #this file to be modified to create the tables in the database
-
 class Category(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(40))
+    category_id = db.Column(db.Integer, primary_key=True)
+    category_name = db.Column(db.String(40),nullable = False)
 
 class Author(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50))
+    author_id = db.Column(db.Integer, primary_key=True)
+    author_name = db.Column(db.String(50),nullable = False)
 
 class Borrower(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50))
-    address = db.Column(db.String(50))
-    bdate = db.Column(db.date)
+    name = db.Column(db.String(50),nullable = False)
+    address = db.Column(db.String(50),nullable = False)
+    bdate = db.Column(db.DateTime)
     phone = db.Column(db.String(20))
 
 class Login(db.Model):
@@ -24,18 +24,18 @@ class Login(db.Model):
    #need to write the relations between tables
 class Books(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(40))
-    author_id = db.Column(db.Integer)
-    category_id = db.Column(db.Integer)
+    name = db.Column(db.String(40),nullable = False)
+    author_id = db.Column(db.Integer,db.ForeignKey(Author.author_id))
+    category_id = db.Column(db.Integer,db.ForeignKey(Category.category_id))
     price = db.Column(db.Integer)
     count = db.Column(db.Integer)
   #need to write the relations between tables
 class Transaction(db.Model):
     transaction_id = db.Column(db.Integer, primary_key=True)
-    borrower_id = db.Column(db.Integer)
-    book_id = db.Column(db.Integer)
-    borrow_date = db.Column(db.Date)
-    return_date = db.Column(db.Date)
+    borrower_id = db.Column(db.Integer, db.ForeignKey(Borrower.id), nullable=False)
+    book_id = db.Column(db.Integer,db.ForeignKey(Category.category_id),nullable=False)
+    borrow_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    return_date = db.Column(db.DateTime)
     status = db.Column(db.String(5))
 
 
