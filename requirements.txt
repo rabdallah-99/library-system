@@ -4,6 +4,7 @@ pymysql
 flask-wtf
 wtforms
 flask-bcrypt
+flask_login
 flask_testing
 pytest
 pytest-cov
