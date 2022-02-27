@@ -1,0 +1,37 @@
+% extends "layout.html" %}
+{% block body_content %}
+{{ form.hidden_tag() }}
+<h1>book</h1>
+<div class="form-group">
+	<form method="POST" action="">
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    {{ form.name.label }} {{ form.name }}
+                    <p Author:<SELECT name="author" style="font-family:verdana" >
+                    {% for j in joblist %}
+	                <OPTION value={{j[0]}}>{{j[1]}}</OPTION>
+                    {% endfor %}
+                    </SELECT>
+                    </p>
+                    <p Category:<SELECT name="category" style="font-family:verdana">
+                    {% for j in joblist %}
+	                <OPTION value={{j[0]}}>{{j[1]}}</OPTION>
+                    {% endfor %}
+                    </SELECT>
+                    </p>
+                    {{ form.name.label }} {{ form.name }}
+                    {{ form.name.label }} {{ form.name }}
+                    {{ form.checkbox() }}
+                </div>
+        <br>
+
+        <div class="form-group">
+                     {{ form.name.label }} {{ form.name }}
+                </div>
+        <br>
+		<div class="form-group">
+			{{ form.submit }}
+		</div>
+    </form>
+</div>
+{% endblock body_content %}

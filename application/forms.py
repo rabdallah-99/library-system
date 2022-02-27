@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request
 from flask_wtf import FlaskForm
-from wtforms import StringField, DateTimeField, FloatField, PasswordField, BooleanField, SubmitField
+from wtforms import StringField, DateField, FloatField, PasswordField, BooleanField, SubmitField, SelectField, IntegerField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
-from application import db, bcrypt
+from application import db, bcrypt, conn
 from application.models import Borrower, Books, Author, Category, Transaction, Login
 #from flask_login import current_user
 # this file should build the available forms needed for project
@@ -37,4 +37,24 @@ class AddAuthor(FlaskForm) :
     name = StringField('Author Name',validators=[DataRequired()])
     submit = SubmitField('Add Author')
 
-class DeleteCategory(FlaskForm) :
+class AddBorrower(FlaskForm):
+    name = StringField('Borrower Name',validators=[DataRequired()])
+    address = StringField('Borrower Address',validators=[DataRequired()])
+    bdate = DateField('Birthday date')
+    phone = StringField('Borrower phone')
+    submit = SubmitField('Add Borrower')
+
+class AddBook(FlaskForm):
+
+    name = FloatField('Book Name',validators=[DataRequired()])
+    author_id=SelectField('Author', coerce=int)
+    category_id=SelectField('Category', coerce=int)
+    price = FloatField('Book Price')
+    count = IntegerField ('Book Count')
+    available=BooleanField('Available')
+
+
+#class DeleteCategory(FlaskForm) :
+
+
+

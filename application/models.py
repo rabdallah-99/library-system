@@ -10,11 +10,11 @@ class Author(db.Model):
     author_name = db.Column(db.String(50),nullable = False)
 
 class Borrower(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50),nullable = False)
-    address = db.Column(db.String(50),nullable = False)
-    bdate = db.Column(db.DateTime)
-    phone = db.Column(db.String(20))
+    borrower_id = db.Column(db.Integer, primary_key=True)
+    borrower_name = db.Column(db.String(50),nullable = False)
+    borrower_address = db.Column(db.String(50),nullable = False)
+    borrower_bdate = db.Column(db.DateTime)
+    borrower_phone = db.Column(db.String(20))
 
 class Login(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -32,7 +32,7 @@ class Books(db.Model):
   #need to write the relations between tables
 class Transaction(db.Model):
     transaction_id = db.Column(db.Integer, primary_key=True)
-    borrower_id = db.Column(db.Integer, db.ForeignKey(Borrower.id), nullable=False)
+    borrower_id = db.Column(db.Integer, db.ForeignKey(Borrower.borrower_id), nullable=False)
     book_id = db.Column(db.Integer,db.ForeignKey(Category.category_id),nullable=False)
     borrow_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     return_date = db.Column(db.DateTime)
