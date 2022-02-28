@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 from application import app, db, conn
 from application.forms import AddCategory, AddAuthor, LogInForm, SignUpForm, AddBook, AddBorrower
 from application.models import Category, Author, Borrower, Login, Books
+import datetime
 #modify this file to suit your database and site layout
 
 
@@ -77,6 +78,23 @@ def readauthor():
         author_string += "<br>"\
                          + author.author_name
     return author_string
+
+
+@app.route('/read-borrower')
+def readborrower():
+    all_borrowers = Borrower.query.all()
+    borrower_string = ""
+    for borrower in all_borrowers:
+        borrower_string += "<br>" + borrower.borrower_name +"\t"+ borrower.borrower_address +"\t"+ borrower.borrower_bdate.strftime("%m%d%Y") +"\t"+ borrower.borrower_phone
+    return  borrower_string
+
+@app.route('/read-book')
+def readbook():
+    all_books = Books.query.all()
+    book_string = ""
+    for book in all_books:
+        book_string += "<br>" + book.book_name +"\t"+ book.author_id +"\t"+ book.category_id +"\t"+ book.price + "\t" + book.count
+    return  book_string
 # Route to home page
 
 
