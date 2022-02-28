@@ -1,34 +1,33 @@
-% extends "layout.html" %}
+{% extends "layout.html" %}
 {% block body_content %}
 {{ form.hidden_tag() }}
-<h1>book</h1>
+<h1>Books</h1>
 <div class="form-group">
 	<form method="POST" action="">
                 {{ form.hidden_tag() }}
                 <div class="form-group">
-                    {{ form.name.label }} {{ form.name }}
-                    <p Author:<SELECT name="author" style="font-family:verdana" >
+                    {{ form.book_name.label }} {{ form.book_name }}
+                    <p  style="font-family:verdana" >
+                        Author: <SELECT name="author">
                     {% for j in joblist %}
+	                <OPTION value="{{j[0]}}">{{j[1]}}</OPTION>
+                    {% endfor %}
+                    </SELECT>
+                    </p>
+                    <p  style="font-family:verdana" >
+                    Category: <SELECT name="category">
+                    {% for j in joblist1 %}
 	                <OPTION value={{j[0]}}>{{j[1]}}</OPTION>
                     {% endfor %}
                     </SELECT>
                     </p>
-                    <p Category:<SELECT name="category" style="font-family:verdana">
-                    {% for j in joblist %}
-	                <OPTION value={{j[0]}}>{{j[1]}}</OPTION>
-                    {% endfor %}
-                    </SELECT>
-                    </p>
-                    {{ form.name.label }} {{ form.name }}
-                    {{ form.name.label }} {{ form.name }}
-                    {{ form.checkbox() }}
+                    {{ form.price.label }} {{ form.price }}
+                    {{ form.count.label }} {{ form.count}}
+                    {{ form.available.label}}{{form.available}}
                 </div>
         <br>
 
-        <div class="form-group">
-                     {{ form.name.label }} {{ form.name }}
-                </div>
-        <br>
+
 		<div class="form-group">
 			{{ form.submit }}
 		</div>

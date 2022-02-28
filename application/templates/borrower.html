@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block body_content %}
+{{ form.hidden_tag() }}
+<h1>Borrower </h1>
+<div class="form-group">
+	<form method="POST" action="">
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    {{ form.borrower_name.label }} {{ form.borrower_name }}<br>
+                    {{ form.borrower_address.label }} {{ form.borrower_address }}<br>
+                    {{ form.borrower_bdate.label }} {{ form.borrower_bdate(class='datepicker') }}<br>
+                    {{ form.borrower_phone.label }} {{ form.borrower_phone}}<br>
+
+                </div>
+        <br>
+
+
+		<div class="form-group">
+			{{ form.submit }}
+		</div>
+    </form>
+</div>
+{% endblock body_content %}
