@@ -5,25 +5,14 @@
 <div class="form-group">
 	<form method="POST" action="">
                 {{ form.hidden_tag() }}
+
                 <div class="form-group">
-                    {{ form.book_name.label }} {{ form.book_name }}
-                    <p  style="font-family:verdana" >
-                        Author: <SELECT name="author">
-                    {% for j in joblist %}
-	                <OPTION value="{{j[0]}}">{{j[1]}}</OPTION>
-                    {% endfor %}
-                    </SELECT>
-                    </p>
-                    <p  style="font-family:verdana" >
-                    Category: <SELECT name="category">
-                    {% for j in joblist1 %}
-	                <OPTION value={{j[0]}}>{{j[1]}}</OPTION>
-                    {% endfor %}
-                    </SELECT>
-                    </p>
-                    {{ form.price.label }} {{ form.price }}
-                    {{ form.count.label }} {{ form.count}}
-                    {{ form.available.label}}{{form.available}}
+                    {{ form.book_name.label }} {{ form.book_name }}<br>
+                    {{ form.author_id.label }} {{ form.author_id}}<br>
+                    {{ form.category_id.label}} {{ form.category_id}}<br>
+                    {{ form.price.label }} {{ form.price }}<br>
+                    {{ form.count.label }} {{ form.count}}<br>
+
                 </div>
         <br>
 

@@ -60,7 +60,16 @@ class AddBook(FlaskForm):
     category_id = SelectField('Category', coerce=int)
     price = FloatField('Book Price')
     count = IntegerField('Book Count')
-    available = BooleanField('Available')
+
     submit = SubmitField('Add Book')
+
+class AddTransaction(FlaskForm):
+    borrower_id = SelectField('Borrower Name', coerce=int)
+    book_id = SelectField('Book Name', coerce=int)
+    borrow_date = DateField('Borrowing date',format='%Y-%m-%d')
+    return_date = DateField('Return date',format='%Y-%m-%d')
+    status = SelectField('status')
+    ubmit = SubmitField('Add Transaction')
+
 #class DeleteCategory(FlaskForm) :
 

@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 from application import app, db, conn
-from application.forms import AddCategory, AddAuthor, LogInForm, SignUpForm, AddBook, AddBorrower
-from application.models import Category, Author, Borrower, Login, Books
+from application.forms import AddCategory, AddAuthor, LogInForm, SignUpForm, AddBook, AddBorrower, AddTransaction
+from application.models import Category, Author, Borrower, Login, Books, Transaction
 #modify this file to suit your database and site layout
 
 
@@ -13,9 +13,6 @@ def add_category():
         db.session.add(new_category)
         db.session.commit()
     return render_template('Category.html', title='Category', form=form)
-#@app.route('/deletecategory',methods=['GET','POST'])
-#def delete_category():
-#   form=DeleteCategory()
 
 
 @app.route('/author', methods=['GET', 'POST'])
@@ -39,10 +36,7 @@ def addbook():
     joblist1 = cursor.fetchall()
     form.category_id.choices = [(h[0], h[1]) for h in joblist1]
     if form.validate_on_submit():
-        #return '<html><h1> {} </h1></html>'.format(form.author_id.data)
-        id=db.Query('SELECT author_id FROM author WHERE author_name ='+form.author_id.data)
-        category=db.Query('SELECT category_id FROM category WHERE category_name='+form.category_id.data)
-        new_book = Books(book_id=0, book_name=form.book_name.data, author_id=id, category_id=category, price=form.price.data, count=form.count.data)
+        new_book = Books(book_id=0, book_name=form.book_name.data, author_id=form.author_id.data, category_id=form.category_id.data, price=form.price.data, count=form.count.data)
         db.session.add(new_book)
         db.session.commit()
 
@@ -57,6 +51,21 @@ def addBorrower():
         db.session.commit()
     return render_template('borrower.html', title='borrower', form=form)
 
+@app.route('/transaction', methods=['GET','POST'])
+def addtransaction():
+    form=AddTransaction()
+    cursor = conn.cursor()
+    cursor.execute('SELECT borrower_id,borrower_name FROM borrower')
+    joblist = cursor.fetchall()
+    form.borrower_id.choices = [(h[0], h[1]) for h in joblist]
+    cursor.execute('SELECT book_id,book_name FROM books')
+    joblist1 = cursor.fetchall()
+    form.book_id.choices = [(h[0], h[1]) for h in joblist1]
+    form.status.choices = [('O','OUT'),('L','Late'),('R', 'Returned')]
+    if form.validate_on_submit():
+        new_transaction = Transaction(transaction_id=0, borrower_id=form.borrower_id.data,book_id=form.book_id.data, borrow_date=form.borrow_date.data, return_date=form.return_date.data, status=form.status.data)
+        db.session.add(new_transaction)
+        db.session.commit()
 
 @app.route('/read')
 def readcategory():
@@ -79,7 +88,9 @@ def readauthor():
     return author_string
 # Route to home page
 
-
+#@app.route('/deletecategory',methods=['GET','POST'])
+#def delete_category():
+#   form=DeleteCategory()
 @app.route('/')
 @app.route('/home')
 def home():
