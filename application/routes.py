@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 from application import app, db, conn
 from application.forms import AddCategory, AddAuthor, LogInForm, SignUpForm, AddBook, AddBorrower
-from application.models import Category, Author, Borrower, Login, Books
+from application.models import Category, Author, Borrower, Login, Books, Transaction
 import datetime
 #modify this file to suit your database and site layout
 
@@ -93,11 +93,21 @@ def readbook():
     all_books = Books.query.all()
     book_string = ""
     for book in all_books:
-        book_string += "<br>" + book.book_name +"\t"+ book.author_id +"\t"+ book.category_id +"\t"+ book.price + "\t" + book.count
+        book_string += "<br>" + book.book_name +"\t"+ str(book.author_id) +"\t"+ str(book.category_id) +"\t"+ str(book.price) + "\t" + str(book.count)
     return  book_string
+@app.route('/transaction')
+def readtransaction():
+    all_transaction = Transaction.query.all()
+    transaction_string = ""
+    for trans in all_transaction:
+        transaction_string += "<br>" + str(trans.borrower_id) +"\t"+ str(trans.book_id) +"\t"+ trans.borrow_date.strftime("%m%d%Y") +"\t"+ trans.return_date.strftime("%m%d%Y") + "\t" + trans.status
+    return  transaction_string
+
+
+
+
+
 # Route to home page
-
-
 @app.route('/')
 @app.route('/home')
 def home():
