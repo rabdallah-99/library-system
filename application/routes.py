@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 from application import app, db, conn
-from application.forms import AddCategory, AddAuthor, LogInForm, SignUpForm, AddBook, AddBorrower
+from application.forms import AddCategory, AddAuthor, LogInForm, SignUpForm, AddBook, AddBorrower, AddTransaction
 from application.models import Category, Author, Borrower, Login, Books, Transaction
 import datetime
 #modify this file to suit your database and site layout
@@ -40,9 +40,8 @@ def addbook():
     joblist1 = cursor.fetchall()
     form.category_id.choices = [(h[0], h[1]) for h in joblist1]
     if form.validate_on_submit():
-        #return '<html><h1> {} </h1></html>'.format(form.author_id.data)
-        id=db.Query('SELECT author_id FROM author WHERE author_name ='+form.author_id.data)
-        category=db.Query('SELECT category_id FROM category WHERE category_name='+form.category_id.data)
+        id = db.Query('SELECT author_id FROM author WHERE author_name ='+form.author_id.data)
+        category = db.Query('SELECT category_id FROM category WHERE category_name='+form.category_id.data)
         new_book = Books(book_id=0, book_name=form.book_name.data, author_id=id, category_id=category, price=form.price.data, count=form.count.data)
         db.session.add(new_book)
         db.session.commit()
@@ -93,7 +92,7 @@ def readbook():
     all_books = Books.query.all()
     book_string = ""
     for book in all_books:
-        book_string += "<br>" + book.book_name +"\t"+ str(book.author_id) +"\t"+ str(book.category_id) +"\t"+ str(book.price) + "\t" + str(book.count)
+        book_string += "<br>" +str(book.book_id) + book.book_name +"\t"+ str(book.author_id) +"\t"+ str(book.category_id) +"\t"+ str(book.price) + "\t" + str(book.count)
     return  book_string
 @app.route('/transaction')
 def readtransaction():

@@ -60,7 +60,6 @@ class AddBook(FlaskForm):
     category_id = SelectField('Category', coerce=int)
     price = FloatField('Book Price')
     count = IntegerField('Book Count')
-    available = BooleanField('Available')
     submit = SubmitField('Add Book')
 #class DeleteCategory(FlaskForm) :
 
