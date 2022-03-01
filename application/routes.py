@@ -106,11 +106,12 @@ def readbook():
     return  book_string
 @app.route('/readtransaction')
 def readtransaction():
-    all_transaction = Transaction.query.all()
-    transaction_string = ""
-    for trans in all_transaction:
-        transaction_string += "<br>" + str(trans.borrower_id) +"\t"+ str(trans.book_id) +"\t"+ trans.borrow_date.strftime("%m%d%Y") +"\t"+ trans.return_date.strftime("%m%d%Y") + "\t" + trans.status
-    return  render_template('display.html', title='transactions',data=all_transaction,)
+    all_transaction = db.session.query(Transaction).all()
+    headings = ("ID","Borrower","Book", "Borrow date","Return date","status")
+    #transaction_string = ""
+    #for trans in all_transaction:
+    #    transaction_string += "<br>" + str(trans.borrower_id) +"\t"+ str(trans.book_id) +"\t"+ trans.borrow_date.strftime("%m%d%Y") +"\t"+ trans.return_date.strftime("%m%d%Y") + "\t" + trans.status
+    return  render_template('display.html', title='transactions', data=all_transaction, headings=headings)
 
 # Route to home page
 

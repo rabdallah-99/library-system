@@ -14,8 +14,8 @@ db = getenv('MYSQL_DATABASE')
 #secret = getenv('MYSQL_SECRETKEY')
 mysql= MySQL()
 # don't forget to switch
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://riham:root@127.0.0.1/library'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://' + user + ':' + password + '@' + url + '/' + db
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://riham:root@127.0.0.1/library'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://' + user + ':' + password + '@' + url + '/' + db
 # Added security
 app.config['SECRET_KEY'] ="aaa23782ncdjsj"
 
