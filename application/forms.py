@@ -69,7 +69,7 @@ class AddTransaction(FlaskForm):
     borrow_date = DateField('Borrowing date',format='%Y-%m-%d')
     return_date = DateField('Return date',format='%Y-%m-%d')
     status = SelectField('status')
-    ubmit = SubmitField('Add Transaction')
+    submit = SubmitField('Add Transaction')
 
 #class DeleteCategory(FlaskForm) :
 

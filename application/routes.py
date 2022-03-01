@@ -66,6 +66,7 @@ def addtransaction():
         new_transaction = Transaction(transaction_id=0, borrower_id=form.borrower_id.data,book_id=form.book_id.data, borrow_date=form.borrow_date.data, return_date=form.return_date.data, status=form.status.data)
         db.session.add(new_transaction)
         db.session.commit()
+    return render_template("transaction.html", joblist=joblist, joblist1=joblist1, form=form)
 
 @app.route('/read')
 def readcategory():
