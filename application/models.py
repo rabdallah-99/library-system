@@ -23,8 +23,8 @@ class Login(db.Model):
 
    #need to write the relations between tables
 class Books(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(40),nullable = False)
+    book_id = db.Column(db.Integer, primary_key=True)
+    book_name = db.Column(db.String(40),nullable = False)
     author_id = db.Column(db.Integer,db.ForeignKey(Author.author_id))
     category_id = db.Column(db.Integer,db.ForeignKey(Category.category_id))
     price = db.Column(db.Integer)
