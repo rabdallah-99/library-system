@@ -83,7 +83,7 @@ class DeleteBook(FlaskForm) :
     submit = SubmitField('Delete')
 
 class DeleteBorrower(FlaskForm) :
-    author_id = SelectField('borrower Name', coerce=int)
+    borrower_id = SelectField('borrower Name', coerce=int)
     submit = SubmitField('Delete')
 
 class UpdateCategory(FlaskForm):
@@ -94,4 +94,16 @@ class UpdateCategory(FlaskForm):
 class UpdateAuthor(FlaskForm):
     author_id = SelectField('Author Name', coerce=int)
     author_name = StringField('New Name', validators=[DataRequired()])
+    submit = SubmitField('Update')
+class UpdateBorrower(FlaskForm):
+    borrower_id = SelectField('Borrower Name', coerce=int)
+    borrower_name = StringField('New Name', validators=[DataRequired()])
+    borrower_bdate = DateField('Birthday date',format='%Y-%m-%d')
+    borrower_phone = StringField('Borrower phone')
+    submit = SubmitField('Update')
+
+class UpdateBook(FlaskForm):
+    book_id = SelectField('Book Name', coerce=int)
+    price = FloatField('Book Price')
+    count = IntegerField('Book Count')
     submit = SubmitField('Update')

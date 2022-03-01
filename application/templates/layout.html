@@ -6,7 +6,7 @@
 			<h1>Library system</h1>
 		</div>
 		<div class="navbar">
-			<h2><b>Navigation:</b>
+			<h2><b>Add:</b>
 
 					<a href="{{ url_for('home') }}">Home</a>
 					<a href="{{ url_for('about') }}">About</a>
@@ -15,6 +15,31 @@
 					<a href="{{ url_for('addbook') }}">Book</a>
 					<a href="{{ url_for('addBorrower') }}">Borrower</a>
 					<a href="{{ url_for('addtransaction') }}">Transaction</a>
+
+			</h2>
+		</div>
+		<div class="navbar">
+			<h2><b>Display:</b>
+
+					<a href="{{ url_for('home') }}">Home</a>
+					<a href="{{ url_for('about') }}">About</a>
+					<a href="{{ url_for('readcategory') }}">Category</a>
+				    <a href="{{ url_for('readauthor') }}">Author</a>
+					<a href="{{ url_for('readbook') }}">Book</a>
+					<a href="{{ url_for('readborrower') }}">Borrower</a>
+					<a href="{{ url_for('readtransaction') }}">Transaction</a>
+
+			</h2>
+		</div>
+		<div class="navbar">
+			<h2><b>Delete:</b>
+
+					<a href="{{ url_for('home') }}">Home</a>
+					<a href="{{ url_for('about') }}">About</a>
+					<a href="{{ url_for('delete_category') }}">Category</a>
+				    <a href="{{ url_for('delete_author') }}">Author</a>
+					<a href="{{ url_for('delete_book') }}">Book</a>
+					<a href="{{ url_for('delete_borrower') }}">Borrower</a>
 
 			</h2>
 		</div>

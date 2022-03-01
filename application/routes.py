@@ -1,9 +1,8 @@
 from flask import Flask, render_template, request
 from application import app, db, conn
-from sqlalchemy import update
-from application.forms import AddCategory, AddAuthor, LogInForm, SignUpForm, AddBook, AddBorrower, AddTransaction, DeleteCategory, DeleteAuthor, DeleteBook, DeleteBorrower, UpdateCategory, UpdateAuthor
+from application.forms import AddCategory, AddAuthor, LogInForm, SignUpForm, AddBook, AddBorrower, AddTransaction, DeleteCategory, DeleteAuthor, DeleteBook, DeleteBorrower, UpdateCategory, UpdateAuthor, UpdateBook, UpdateBorrower
 from application.models import Category, Author, Borrower, Login, Books, Transaction
-import datetime
+
 
 @app.route('/category', methods=['GET', 'POST'])
 def add_category():
@@ -51,9 +50,10 @@ def addBorrower():
         db.session.commit()
     return render_template('borrower.html', title='borrower', form=form)
 
-@app.route('/transaction', methods=['GET','POST'])
+
+@app.route('/transaction', methods=['GET', 'POST'])
 def addtransaction():
-    form=AddTransaction()
+    form = AddTransaction()
     cursor = conn.cursor()
     cursor.execute('SELECT borrower_id,borrower_name FROM borrower')
     joblist = cursor.fetchall()
@@ -61,12 +61,13 @@ def addtransaction():
     cursor.execute('SELECT book_id,book_name FROM books')
     joblist1 = cursor.fetchall()
     form.book_id.choices = [(h[0], h[1]) for h in joblist1]
-    form.status.choices = [('O','OUT'),('L','Late'),('R', 'Returned')]
+    form.status.choices = [('O', 'OUT'), ('L', 'Late'), ('R', 'Returned')]
     if form.validate_on_submit():
         new_transaction = Transaction(transaction_id=0, borrower_id=form.borrower_id.data,book_id=form.book_id.data, borrow_date=form.borrow_date.data, return_date=form.return_date.data, status=form.status.data)
         db.session.add(new_transaction)
         db.session.commit()
     return render_template("transaction.html", joblist=joblist, joblist1=joblist1, form=form)
+
 
 @app.route('/read')
 def readcategory():
@@ -103,13 +104,13 @@ def readbook():
     for book in all_books:
         book_string += "<br>" +str(book.book_id) + book.book_name +"\t"+ str(book.author_id) +"\t"+ str(book.category_id) +"\t"+ str(book.price) + "\t" + str(book.count)
     return  book_string
-@app.route('/transaction')
+@app.route('/readtransaction')
 def readtransaction():
     all_transaction = Transaction.query.all()
     transaction_string = ""
     for trans in all_transaction:
         transaction_string += "<br>" + str(trans.borrower_id) +"\t"+ str(trans.book_id) +"\t"+ trans.borrow_date.strftime("%m%d%Y") +"\t"+ trans.return_date.strftime("%m%d%Y") + "\t" + trans.status
-    return  transaction_string
+    return  render_template('display.html', title='transactions',data=all_transaction,)
 
 # Route to home page
 
@@ -201,3 +202,16 @@ def update_author():
        Author.query.filter_by(author_id=form.author_id.data).update(dict(author_name=form.author_name.data))
        db.session.commit()
    return render_template("modauth.html", joblist1=joblist1, form=form)
+
+@app.route('/updatebook', methods=['GET','POST'])
+def update_book():
+   form = UpdateBook()
+   cursor = conn.cursor()
+   cursor.execute('SELECT book_id,book_name FROM books')
+   joblist1 = cursor.fetchall()
+   form.book_id.choices = [(h[0], h[1]) for h in joblist1]
+   if form.validate_on_submit():
+       Books.query.filter_by(book_id=form.book_id.data).update(dict(count=form.count.data))
+       Books.query.filter_by(book_id=form.book_id.data).update(dict(price=form.price.data))
+       db.session.commit()
+   return render_template("modbook.html", joblist1=joblist1, form=form)
