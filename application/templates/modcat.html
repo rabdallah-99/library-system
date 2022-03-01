@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block body_content %}
+{{ form.hidden_tag() }}
+<h1>Update Category</h1>
+<div class="form-group">
+	<form method="POST" action="">
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    <h1 Please select category to update ></h1>
+                     {{ form.category_id.label }} {{ form.category_id }}
+                     {{ form.category_name.label }} {{ form.category_name }}
+                </div>
+        <br>
+		<div class="form-group">
+			{{ form.submit }}
+		</div>
+    </form>
+</div>
+{% endblock body_content %}

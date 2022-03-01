@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from application import app, db, conn
-from application.forms import AddCategory, AddAuthor, LogInForm, SignUpForm, AddBook, AddBorrower, AddTransaction, DeleteCategory, DeleteAuthor, DeleteBook, DeleteBorrower
+from sqlalchemy import update
+from application.forms import AddCategory, AddAuthor, LogInForm, SignUpForm, AddBook, AddBorrower, AddTransaction, DeleteCategory, DeleteAuthor, DeleteBook, DeleteBorrower, UpdateCategory, UpdateAuthor
 from application.models import Category, Author, Borrower, Login, Books, Transaction
 import datetime
 
@@ -110,13 +111,7 @@ def readtransaction():
         transaction_string += "<br>" + str(trans.borrower_id) +"\t"+ str(trans.book_id) +"\t"+ trans.borrow_date.strftime("%m%d%Y") +"\t"+ trans.return_date.strftime("%m%d%Y") + "\t" + trans.status
     return  transaction_string
 
-
-
-
-
 # Route to home page
-
-
 
 @app.route('/')
 @app.route('/home')
@@ -183,3 +178,26 @@ def delete_borrower():
        Borrower.query.filter_by(borrower_id=form.borrower_id.data).delete()
        db.session.commit()
    return render_template("delborrower.html", joblist1=joblist1, form=form)
+
+@app.route('/updatecategory', methods=['GET','POST'])
+def update_category():
+   form = UpdateCategory()
+   cursor = conn.cursor()
+   cursor.execute('SELECT category_id,category_name FROM category')
+   joblist1 = cursor.fetchall()
+   form.category_id.choices = [(h[0], h[1]) for h in joblist1]
+   if form.validate_on_submit():
+       Category.query.filter_by(category_id=form.category_id.data).update(dict(category_name=form.category_name.data))
+       db.session.commit()
+   return render_template("modcat.html", joblist1=joblist1, form=form)
+@app.route('/updateauthor', methods=['GET','POST'])
+def update_author():
+   form = UpdateAuthor()
+   cursor = conn.cursor()
+   cursor.execute('SELECT author_id,author_name FROM author')
+   joblist1 = cursor.fetchall()
+   form.author_id.choices = [(h[0], h[1]) for h in joblist1]
+   if form.validate_on_submit():
+       Author.query.filter_by(author_id=form.author_id.data).update(dict(author_name=form.author_name.data))
+       db.session.commit()
+   return render_template("modauth.html", joblist1=joblist1, form=form)
