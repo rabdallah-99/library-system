@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block body_content %}
+{{ form.hidden_tag() }}
+<h1>Delete borrower</h1>
+<div class="form-group">
+	<form method="POST" action="">
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    <h1 Please select borrower to delete ></h1>
+                     {{ form.borrower_id.label }} {{ form.borrower_id }}
+                </div>
+        <br>
+		<div class="form-group">
+			{{ form.submit }}
+		</div>
+    </form>
+</div>
+{% endblock body_content %}

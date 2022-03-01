@@ -70,5 +70,18 @@ class AddTransaction(FlaskForm):
     status = SelectField('status')
     submit = SubmitField('Add Transaction')
 
-#class DeleteCategory(FlaskForm) :
+class DeleteCategory(FlaskForm) :
+    category_id = SelectField('Category Name', coerce=int)
+    submit = SubmitField('Delete')
 
+class DeleteAuthor(FlaskForm) :
+    author_id = SelectField('Author Name', coerce=int)
+    submit = SubmitField('Delete')
+
+class DeleteBook(FlaskForm) :
+    book_id = SelectField('Book Name', coerce=int)
+    submit = SubmitField('Delete')
+
+class DeleteBorrower(FlaskForm) :
+    author_id = SelectField('borrower Name', coerce=int)
+    submit = SubmitField('Delete')

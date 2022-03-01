@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block body_content %}
+{{ form.hidden_tag() }}
+<h1>Delete Author</h1>
+<div class="form-group">
+	<form method="POST" action="">
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    <h1 Please select author to delete ></h1>
+                     {{ form.author_id.label }} {{ form.author_id }}
+                </div>
+        <br>
+		<div class="form-group">
+			{{ form.submit }}
+		</div>
+    </form>
+</div>
+{% endblock body_content %}

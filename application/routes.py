@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 from application import app, db, conn
-from application.forms import AddCategory, AddAuthor, LogInForm, SignUpForm, AddBook, AddBorrower, AddTransaction
+from application.forms import AddCategory, AddAuthor, LogInForm, SignUpForm, AddBook, AddBorrower, AddTransaction, DeleteCategory, DeleteAuthor, DeleteBook, DeleteBorrower
 from application.models import Category, Author, Borrower, Login, Books, Transaction
 import datetime
 
@@ -132,6 +132,54 @@ def about():
     return render_template('about.html', title='About')
 
 
-#@app.route('/deletecategory',methods=['GET','POST'])
-#def delete_category():
-#   form=DeleteCategory()
+@app.route('/deletecategory',methods=['GET','POST'])
+def delete_category():
+   form=DeleteCategory()
+   cursor = conn.cursor()
+   cursor.execute('SELECT category_id,category_name FROM category')
+   joblist1 = cursor.fetchall()
+   form.category_id.choices = [(h[0], h[1]) for h in joblist1]
+   if form.validate_on_submit():
+       Category.query.filter_by(category_id=form.category_id.data).delete()
+       #db.session.delete(cat)
+       db.session.commit()
+   return render_template("delcat.html", joblist1=joblist1, form=form)
+
+@app.route('/deleteauthor',methods=['GET','POST'])
+def delete_author():
+   form=DeleteAuthor()
+   cursor = conn.cursor()
+   cursor.execute('SELECT * FROM author')
+   joblist1 = cursor.fetchall()
+   form.author_id.choices = [(h[0], h[1]) for h in joblist1]
+   if form.validate_on_submit():
+       Author.query.filter_by(author_id=form.author_id.data).delete()
+       #db.session.delete(cat)
+       db.session.commit()
+   return render_template("delauth.html", joblist1=joblist1, form=form)
+
+
+@app.route('/deletebook',methods=['GET','POST'])
+def delete_book():
+   form=DeleteBook()
+   cursor = conn.cursor()
+   cursor.execute('SELECT book_id,book_name FROM books')
+   joblist1 = cursor.fetchall()
+   form.book_id.choices = [(h[0], h[1]) for h in joblist1]
+   if form.validate_on_submit():
+       Books.query.filter_by(book_id=form.book_id.data).delete()
+       db.session.commit()
+   return render_template("delbook.html", joblist1=joblist1, form=form)
+
+
+@app.route('/deleteborrower',methods=['GET','POST'])
+def delete_borrower():
+   form=DeleteBorrower()
+   cursor = conn.cursor()
+   cursor.execute('SELECT borrower_id,borrower_name FROM borrower')
+   joblist1 = cursor.fetchall()
+   form.borrower_id.choices = [(h[0], h[1]) for h in joblist1]
+   if form.validate_on_submit():
+       Borrower.query.filter_by(borrower_id=form.borrower_id.data).delete()
+       db.session.commit()
+   return render_template("delborrower.html", joblist1=joblist1, form=form)
