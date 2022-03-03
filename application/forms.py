@@ -3,7 +3,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, DateField, FloatField, PasswordField, BooleanField, SubmitField, SelectField, IntegerField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 #from wtforms.fields.html5 import DateField
-from application import db, bcrypt, conn
+from application import db, bcrypt, conn,mysql
 from application.models import Borrower, Books, Author, Category, Transaction, Login
 #from flask_login import current_user
 # this file should build the available forms needed for project

@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from application import app, db, conn
+from application import app, db, conn,mysql
 from application.forms import AddCategory, AddAuthor, LogInForm, SignUpForm, AddBook, AddBorrower, AddTransaction, DeleteCategory, DeleteAuthor, DeleteBook, DeleteBorrower, UpdateCategory, UpdateAuthor, UpdateBook, UpdateBorrower
 from application.models import Category, Author, Borrower, Login, Books, Transaction
 
@@ -53,6 +53,7 @@ def addBorrower():
 @app.route('/transaction', methods=['GET', 'POST'])
 def addtransaction():
     form = AddTransaction()
+    conn = mysql.connect()
     cursor = conn.cursor()
     cursor.execute('SELECT borrower_id,borrower_name FROM borrower')
     joblist = cursor.fetchall()
@@ -70,7 +71,7 @@ def addtransaction():
 
 @app.route('/read')
 def readcategory():
-
+    conn = mysql.connect()
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM category')
     all_category = cursor.fetchall()
@@ -80,6 +81,7 @@ def readcategory():
 
 @app.route('/read-author')
 def readauthor():
+    conn = mysql.connect()
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM author')
     all_authors= cursor.fetchall()
@@ -90,6 +92,7 @@ def readauthor():
 
 @app.route('/read-borrower')
 def readborrower():
+    conn = mysql.connect()
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM borrower')
     all_books = cursor.fetchall()
@@ -98,13 +101,16 @@ def readborrower():
 
 @app.route('/read-book')
 def readbook():
+    conn = mysql.connect()
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM books')
     all_books = cursor.fetchall()
     headings = ("ID","Book Name","Author id", "Category id","price","count")
+    conn.commit()
     return  render_template('display.html', title='Books', data=all_books, headings=headings)
 @app.route('/readtransaction')
 def readtransaction():
+    conn = mysql.connect()
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM transaction')
     all_transaction = cursor.fetchall()
@@ -142,6 +148,7 @@ def delete_category():
 @app.route('/deleteauthor',methods=['GET','POST'])
 def delete_author():
    form=DeleteAuthor()
+   conn = mysql.connect()
    cursor = conn.cursor()
    cursor.execute('SELECT * FROM author')
    joblist1 = cursor.fetchall()
@@ -155,6 +162,7 @@ def delete_author():
 @app.route('/deletebook',methods=['GET','POST'])
 def delete_book():
    form=DeleteBook()
+   conn = mysql.connect()
    cursor = conn.cursor()
    cursor.execute('SELECT book_id,book_name FROM books')
    joblist1 = cursor.fetchall()
@@ -168,6 +176,7 @@ def delete_book():
 @app.route('/deleteborrower',methods=['GET','POST'])
 def delete_borrower():
    form=DeleteBorrower()
+   conn = mysql.connect()
    cursor = conn.cursor()
    cursor.execute('SELECT borrower_id,borrower_name FROM borrower')
    joblist1 = cursor.fetchall()
@@ -180,6 +189,7 @@ def delete_borrower():
 @app.route('/updatecategory', methods=['GET','POST'])
 def update_category():
    form = UpdateCategory()
+   conn = mysql.connect()
    cursor = conn.cursor()
    cursor.execute('SELECT category_id,category_name FROM category')
    joblist1 = cursor.fetchall()
@@ -191,6 +201,7 @@ def update_category():
 @app.route('/updateauthor', methods=['GET','POST'])
 def update_author():
    form = UpdateAuthor()
+   conn = mysql.connect()
    cursor = conn.cursor()
    cursor.execute('SELECT author_id,author_name FROM author')
    joblist1 = cursor.fetchall()
@@ -198,6 +209,8 @@ def update_author():
    if form.validate_on_submit():
        Author.query.filter_by(author_id=form.author_id.data).update(dict(author_name=form.author_name.data))
        db.session.commit()
+       conn.close()
+
    return render_template("modauth.html", joblist1=joblist1, form=form)
 
 @app.route('/updatebook', methods=['GET','POST'])
