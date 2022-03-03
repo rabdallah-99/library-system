@@ -3,7 +3,6 @@ from application import app, db, conn
 from application.forms import AddCategory, AddAuthor, LogInForm, SignUpForm, AddBook, AddBorrower, AddTransaction, DeleteCategory, DeleteAuthor, DeleteBook, DeleteBorrower, UpdateCategory, UpdateAuthor, UpdateBook, UpdateBorrower
 from application.models import Category, Author, Borrower, Login, Books, Transaction
 
-
 @app.route('/category', methods=['GET', 'POST'])
 def add_category():
     form = AddCategory()
@@ -72,45 +71,44 @@ def addtransaction():
 @app.route('/read')
 def readcategory():
 
-    all_category = Category.query.all()
-    category_string = ""
-    for category in all_category:
-        category_string += "<br>" + category.category_name
-    return category_string
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM category')
+    all_category = cursor.fetchall()
+    headings = ("ID"," Name")
+    return  render_template('display.html', title='Category', data=all_category, headings=headings)
 
 
 @app.route('/read-author')
 def readauthor():
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM author')
+    all_authors= cursor.fetchall()
+    headings = ("ID"," Name")
+    return  render_template('display.html', title='Authors', data=all_authors, headings=headings)
 
-    all_authors = Author.query.all()
-    author_string = ""
-    for author in all_authors:
-        author_string += "<br>" + author.author_name
-    return author_string
 
 
 @app.route('/read-borrower')
 def readborrower():
-    all_borrowers = Borrower.query.all()
-    borrower_string = ""
-    for borrower in all_borrowers:
-        borrower_string += "<br>" + borrower.borrower_name +"\t"+ borrower.borrower_address +"\t"+ borrower.borrower_bdate.strftime("%m%d%Y") +"\t"+ borrower.borrower_phone
-    return  borrower_string
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM borrower')
+    all_books = cursor.fetchall()
+    headings = ("ID"," Name","Address", "birth date","phone")
+    return  render_template('display.html', title='Borrower', data=all_books, headings=headings)
 
 @app.route('/read-book')
 def readbook():
-    all_books = Books.query.all()
-    book_string = ""
-    for book in all_books:
-        book_string += "<br>" +str(book.book_id) + book.book_name +"\t"+ str(book.author_id) +"\t"+ str(book.category_id) +"\t"+ str(book.price) + "\t" + str(book.count)
-    return  book_string
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM books')
+    all_books = cursor.fetchall()
+    headings = ("ID","Book Name","Author id", "Category id","price","count")
+    return  render_template('display.html', title='Books', data=all_books, headings=headings)
 @app.route('/readtransaction')
 def readtransaction():
-    all_transaction = db.session.query(Transaction).all()
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM transaction')
+    all_transaction = cursor.fetchall()
     headings = ("ID","Borrower","Book", "Borrow date","Return date","status")
-    #transaction_string = ""
-    #for trans in all_transaction:
-    #    transaction_string += "<br>" + str(trans.borrower_id) +"\t"+ str(trans.book_id) +"\t"+ trans.borrow_date.strftime("%m%d%Y") +"\t"+ trans.return_date.strftime("%m%d%Y") + "\t" + trans.status
     return  render_template('display.html', title='transactions', data=all_transaction, headings=headings)
 
 # Route to home page
@@ -138,7 +136,6 @@ def delete_category():
    form.category_id.choices = [(h[0], h[1]) for h in joblist1]
    if form.validate_on_submit():
        Category.query.filter_by(category_id=form.category_id.data).delete()
-       #db.session.delete(cat)
        db.session.commit()
    return render_template("delcat.html", joblist1=joblist1, form=form)
 
@@ -151,7 +148,6 @@ def delete_author():
    form.author_id.choices = [(h[0], h[1]) for h in joblist1]
    if form.validate_on_submit():
        Author.query.filter_by(author_id=form.author_id.data).delete()
-       #db.session.delete(cat)
        db.session.commit()
    return render_template("delauth.html", joblist1=joblist1, form=form)
 
