@@ -231,7 +231,7 @@ def update_book():
 def update_borrower():
    form = UpdateBorrower()
    cursor = conn.cursor()
-   cursor.execute('SELECT book_id,book_name FROM books')
+   cursor.execute('SELECT borrower_id,borrower_name FROM borrower')
    joblist1 = cursor.fetchall()
    form.borrower_id.choices = [(h[0], h[1]) for h in joblist1]
    if form.validate_on_submit():

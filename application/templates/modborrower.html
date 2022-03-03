@@ -7,9 +7,9 @@
                 {{ form.hidden_tag() }}
                 <div class="form-group">
                     <h1 Please select borrower to update ></h1>
-                     {{ form.borrower_id.label }} {{ form.borrower_id }}
-                     {{ form.borrower_address .label }} {{ form.borrower_address  }}
-                     {{ form.borrower_bdate.label }} {{ form.bdate_phone }}
+                     {{ form.borrower_id.label }} {{ form.borrower_id }}<br>
+                     {{ form.borrower_address .label }} {{ form.borrower_address  }}<br>
+                     {{ form.borrower_bdate.label }} {{ form.borrower_bdate(class='datepicker') }}<br>
                      {{ form.borrower_phone.label }} {{ form.borrower_phone }}
                 </div>
         <br>
