@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block body_content %}
+{{ form.hidden_tag() }}
+<h1>Update borrower</h1>
+<div class="form-group">
+	<form method="POST" action="">
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    <h1 Please select borrower to update ></h1>
+                     {{ form.borrower_id.label }} {{ form.borrower_id }}
+                     {{ form.borrower_address .label }} {{ form.borrower_address  }}
+                     {{ form.borrower_bdate.label }} {{ form.bdate_phone }}
+                     {{ form.borrower_phone.label }} {{ form.borrower_phone }}
+                </div>
+        <br>
+		<div class="form-group">
+			{{ form.submit }}
+		</div>
+    </form>
+</div>
+{% endblock body_content %}

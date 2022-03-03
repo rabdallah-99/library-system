@@ -95,9 +95,10 @@ class UpdateAuthor(FlaskForm):
     author_id = SelectField('Author Name', coerce=int)
     author_name = StringField('New Name', validators=[DataRequired()])
     submit = SubmitField('Update')
+
 class UpdateBorrower(FlaskForm):
     borrower_id = SelectField('Borrower Name', coerce=int)
-    borrower_name = StringField('New Name', validators=[DataRequired()])
+    borrower_address = StringField('Borrower address')
     borrower_bdate = DateField('Birthday date',format='%Y-%m-%d')
     borrower_phone = StringField('Borrower phone')
     submit = SubmitField('Update')

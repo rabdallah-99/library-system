@@ -225,3 +225,18 @@ def update_book():
        Books.query.filter_by(book_id=form.book_id.data).update(dict(price=form.price.data))
        db.session.commit()
    return render_template("modbook.html", joblist1=joblist1, form=form)
+
+
+@app.route('/updateborrower', methods=['GET','POST'])
+def update_borrower():
+   form = UpdateBorrower()
+   cursor = conn.cursor()
+   cursor.execute('SELECT book_id,book_name FROM books')
+   joblist1 = cursor.fetchall()
+   form.borrower_id.choices = [(h[0], h[1]) for h in joblist1]
+   if form.validate_on_submit():
+       Borrower.query.filter_by(borrower_id=form.borrower_id.data).update(dict(borrower_address=form.borrower_address.data))
+       Borrower.query.filter_by(borrower_id=form.borrower_id.data).update(dict(borrower_bdate=form.borrower_bdate.data))
+       Borrower.query.filter_by(borrower_id=form.borrower_id.data).update(dict(borrower_phone=form.borrower_phone.data))
+       db.session.commit()
+   return render_template("modborrower.html", joblist1=joblist1, form=form)
