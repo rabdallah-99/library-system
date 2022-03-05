@@ -113,6 +113,7 @@ class UpdatePrice(FlaskForm):
     book_id = SelectField('Book Name', coerce=int)
     price = FloatField('Book Price')
     submit = SubmitField('Update')
+
 class UpdateCount(FlaskForm):
     book_id = SelectField('Book Name', coerce=int)
     count = IntegerField('Book Count')
