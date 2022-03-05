@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 from application import app, db, conn,mysql
-from application.forms import AddCategory, AddAuthor, LogInForm, SignUpForm, AddBook, AddBorrower, AddTransaction, DeleteCategory, DeleteAuthor, DeleteBook, DeleteBorrower, UpdateCategory, UpdateAuthor, UpdateBook, UpdateBorrower
+from application.forms import AddCategory, AddAuthor, LogInForm, SignUpForm, AddBook, AddBorrower, AddTransaction, DeleteCategory, DeleteAuthor, DeleteBook, DeleteBorrower, UpdateCategory, UpdateAuthor, UpdateBook, UpdateBorrower,UpdatePrice, UpdateCount
 from application.models import Category, Author, Borrower, Login, Books, Transaction
 
 @app.route('/category', methods=['GET', 'POST'])
@@ -58,7 +58,7 @@ def addtransaction():
     cursor.execute('SELECT borrower_id,borrower_name FROM borrower')
     joblist = cursor.fetchall()
     form.borrower_id.choices = [(h[0], h[1]) for h in joblist]
-    cursor.execute('SELECT book_id,book_name FROM books')
+    cursor.execute('SELECT book_id,book_name FROM books WHERE count > 0')
     joblist1 = cursor.fetchall()
     form.book_id.choices = [(h[0], h[1]) for h in joblist1]
     form.status.choices = [('O', 'OUT'), ('L', 'Late'), ('R', 'Returned')]
@@ -240,3 +240,27 @@ def update_borrower():
        Borrower.query.filter_by(borrower_id=form.borrower_id.data).update(dict(borrower_phone=form.borrower_phone.data))
        db.session.commit()
    return render_template("modborrower.html", joblist1=joblist1, form=form)
+
+@app.route('/changebookprice',methods=['GET', 'POST'])
+def changeprice():
+    form = UpdatePrice()
+    cursor = conn.cursor()
+    cursor.execute('SELECT book_id,book_name FROM books')
+    joblist1 = cursor.fetchall()
+    form.book_id.choices = [(h[0], h[1]) for h in joblist1]
+    if form.validate_on_submit():
+       Books.query.filter_by(book_id=form.book_id.data).update(dict(price=form.price.data))
+       db.session.commit()
+    return render_template("modprice.html", joblist1=joblist1, form=form)
+
+@app.route('/changebookcount',methods=['GET', 'POST'])
+def changecount():
+    form = UpdateCount()
+    cursor = conn.cursor()
+    cursor.execute('SELECT book_id,book_name FROM books')
+    joblist1 = cursor.fetchall()
+    form.book_id.choices = [(h[0], h[1]) for h in joblist1]
+    if form.validate_on_submit():
+       Books.query.filter_by(book_id=form.book_id.data).update(dict(count=form.count.data))
+       db.session.commit()
+    return render_template("modcount.html", joblist1=joblist1, form=form)

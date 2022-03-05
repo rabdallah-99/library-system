@@ -9,22 +9,22 @@ app = Flask(__name__)
 # Set login details from environment variables
 user = getenv('MYSQL_USER')
 password = getenv('MYSQL_PASSWORD')
-url = getenv('MYSQL_URL')
-db = getenv('MYSQL_DATABASE')
+mysqluri = getenv('MYSQL_URI')
+x = getenv('MYSQL_DATABASE')
 #secret = getenv('MYSQL_SECRETKEY')
 mysql= MySQL()
 # don't forget to switch
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://riham:root@127.0.0.1/library'
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://' + user + ':' + password + '@' + url + '/' + db
+#app.config['SQLALCHEMY_DATABASE_URI'] = mysqluri
 # Added security
 app.config['SECRET_KEY'] ="aaa23782ncdjsj"
 
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
-app.config['MYSQL_DATABASE_USER'] = 'riham'    # default user of MySQL to be replaced with appropriate username
-app.config['MYSQL_DATABASE_PASSWORD'] = 'root' # default passwrod of MySQL to be replaced with appropriate password
-app.config['MYSQL_DATABASE_DB'] = 'library'  # Database name to be replaced with appropriate database name
-app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+app.config['MYSQL_DATABASE_USER'] = getenv('MYSQL_USER')   # default user of MySQL to be replaced with appropriate username
+app.config['MYSQL_DATABASE_PASSWORD'] ='root' # default passwrod of MySQL to be replaced with appropriate password
+app.config['MYSQL_DATABASE_DB'] = 'library' # Database name to be replaced with appropriate database name
+app.config['MYSQL_DATABASE_HOST'] =getenv('MYSQL_URL')
 mysql.init_app(app)
 conn = mysql.connect()
 #login_manager = LoginManager(app)
