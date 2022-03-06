@@ -1,9 +1,10 @@
-from flask import Flask, render_template, request
-from application import app, db, conn,mysql
-from application.forms import AddCategory, AddAuthor, LogInForm, SignUpForm, AddBook, AddBorrower, AddTransaction, DeleteCategory, DeleteAuthor, DeleteBook, DeleteBorrower, UpdateCategory, UpdateAuthor, UpdateBook, UpdateBorrower,UpdatePrice, UpdateCount
-from application.models import Category, Author, Borrower, Login, Books, Transaction
+from flask import render_template
+from application import app, db, conn, mysql
+from application.forms import AddCategory, AddAuthor, AddBook, AddBorrower, AddTransaction, DeleteCategory, DeleteAuthor, DeleteBook, DeleteBorrower, UpdateCategory, UpdateAuthor, UpdateBook, UpdateBorrower,UpdatePrice, UpdateCount
+from application.models import Category, Author, Borrower, Books, Transaction
 
-@app.route('/category', methods=['GET', 'POST'])
+
+app.route('/category', methods=['GET', 'POST'])
 def add_category():
     form = AddCategory()
     if form.validate_on_submit():
@@ -96,7 +97,7 @@ def readborrower():
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM borrower')
     all_books = cursor.fetchall()
-    headings = ("ID"," Name","Address", "birth date","phone")
+    headings = ("ID", " Name", "Address", "birth date", "phone")
     return  render_template('display.html', title='Borrower', data=all_books, headings=headings)
 
 @app.route('/read-book')
@@ -105,7 +106,7 @@ def readbook():
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM books')
     all_books = cursor.fetchall()
-    headings = ("ID","Book Name","Author id", "Category id","price","count")
+    headings = ("ID", "Book Name", "Author id", "Category id", "price", "count")
     conn.commit()
     return  render_template('display.html', title='Books', data=all_books, headings=headings)
 @app.route('/readtransaction')
@@ -114,7 +115,7 @@ def readtransaction():
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM transaction')
     all_transaction = cursor.fetchall()
-    headings = ("ID","Borrower","Book", "Borrow date","Return date","status")
+    headings = ("ID", "Borrower", "Book", "Borrow date", "Return date", "status")
     return  render_template('display.html', title='transactions', data=all_transaction, headings=headings)
 
 # Route to home page
@@ -147,7 +148,7 @@ def delete_category():
 
 @app.route('/deleteauthor',methods=['GET','POST'])
 def delete_author():
-   form=DeleteAuthor()
+   form = DeleteAuthor()
    conn = mysql.connect()
    cursor = conn.cursor()
    cursor.execute('SELECT * FROM author')
@@ -159,9 +160,9 @@ def delete_author():
    return render_template("delauth.html", joblist1=joblist1, form=form)
 
 
-@app.route('/deletebook',methods=['GET','POST'])
+@app.route('/deletebook',methods=['GET', 'POST'])
 def delete_book():
-   form=DeleteBook()
+   form = DeleteBook()
    conn = mysql.connect()
    cursor = conn.cursor()
    cursor.execute('SELECT book_id,book_name FROM books')
@@ -173,7 +174,7 @@ def delete_book():
    return render_template("delbook.html", joblist1=joblist1, form=form)
 
 
-@app.route('/deleteborrower',methods=['GET','POST'])
+@app.route('/deleteborrower', methods=['GET', 'POST'])
 def delete_borrower():
    form=DeleteBorrower()
    conn = mysql.connect()
@@ -200,20 +201,20 @@ def update_category():
    return render_template("modcat.html", joblist1=joblist1, form=form)
 @app.route('/updateauthor', methods=['GET','POST'])
 def update_author():
-   form = UpdateAuthor()
-   conn = mysql.connect()
-   cursor = conn.cursor()
-   cursor.execute('SELECT author_id,author_name FROM author')
-   joblist1 = cursor.fetchall()
-   form.author_id.choices = [(h[0], h[1]) for h in joblist1]
-   if form.validate_on_submit():
-       Author.query.filter_by(author_id=form.author_id.data).update(dict(author_name=form.author_name.data))
-       db.session.commit()
-       conn.close()
+    form = UpdateAuthor()
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    cursor.execute('SELECT author_id,author_name FROM author')
+    joblist1 = cursor.fetchall()
+    form.author_id.choices = [(h[0], h[1]) for h in joblist1]
+    if form.validate_on_submit():
+        Author.query.filter_by(author_id=form.author_id.data).update(dict(author_name=form.author_name.data))
+        db.session.commit()
+        conn.close()
+    return render_template("modauth.html", joblist1=joblist1, form=form)
 
-   return render_template("modauth.html", joblist1=joblist1, form=form)
 
-@app.route('/updatebook', methods=['GET','POST'])
+@app.route ('/updatebook', methods=['GET', 'POST'])
 def update_book():
    form = UpdateBook()
    cursor = conn.cursor()

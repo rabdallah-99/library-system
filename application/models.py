@@ -34,12 +34,7 @@ class Borrower(db.Model):
     borrower_bdate = db.Column(db.DateTime)
     borrower_phone = db.Column(db.String(20))
 
-class Login(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50))
-    password = db.Column(db.String(50))
 
-   #need to write the relations between tables
 class Books(db.Model):
     book_id = db.Column(db.Integer, primary_key=True)
     book_name = db.Column(db.String(40),nullable = False)
@@ -47,7 +42,8 @@ class Books(db.Model):
     category_id = db.Column(db.Integer,db.ForeignKey(Category.category_id))
     price = db.Column(db.Integer)
     count = db.Column(db.Integer)
-  #need to write the relations between tables
+
+
 class Transaction(db.Model):
     transaction_id = db.Column(db.Integer, primary_key=True)
     borrower_id = db.Column(db.Integer, db.ForeignKey(Borrower.borrower_id), nullable=False)
