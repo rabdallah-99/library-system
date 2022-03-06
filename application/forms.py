@@ -2,12 +2,10 @@ from flask import Flask, render_template, request
 from flask_wtf import FlaskForm
 from wtforms import StringField, DateField, FloatField, PasswordField, BooleanField, SubmitField, SelectField, IntegerField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
-from application import db, bcrypt, conn,mysql
+from application import db, conn,mysql
 from application.models import Borrower, Books, Author, Category, Transaction
 
 # this file should build the available forms needed for project
-
-
 
 
 class AddCategory(FlaskForm):
@@ -93,3 +91,11 @@ class UpdateCount(FlaskForm):
     book_id = SelectField('Book Name', coerce=int)
     count = IntegerField('Book Count')
     submit = SubmitField('Update')
+#
+#class UpdateTransaction(FlaskForm):
+#    borrower_id = SelectField('Borrower Name', coerce=int)
+#    book_id = SelectField('Book Name', coerce=int)
+#    borrow_date = DateField('Borrowing date',format='%Y-%m-%d')
+ #   return_date = DateField('Return date',format='%Y-%m-%d')
+  #  status = SelectField('status')
+   # submit = SubmitField('Add Transaction')
