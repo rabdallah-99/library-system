@@ -7,7 +7,7 @@ class Category(db.Model):
 
 class Author(db.Model):
     author_id = db.Column(db.Integer, primary_key=True)
-    author_name = db.Column(db.String(50),nullable = False)
+    author_name = db.Column(db.String(50), nullable = False)
 
 class Borrower(db.Model):
     borrower_id = db.Column(db.Integer, primary_key=True)
