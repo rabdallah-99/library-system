@@ -80,6 +80,23 @@ class TestRoutes (TestBase):
         response = self.client.get(url_for('delete_author'))
         self.assertEqual(response.status_code, 200)
 
+        response = self.client.get(url_for('readauthor'))
+        self.assertEqual(response.status_code, 200)
+        response = self.client.get(url_for('delete_borrower'))
+        self.assertEqual(response.status_code, 200)
+        response = self.client.get(url_for('delete_book'))
+        self.assertEqual(response.status_code, 200)
+        response = self.client.get(url_for('about'))
+        self.assertEqual(response.status_code, 200)
+        response = self.client.get(url_for('home'))
+        self.assertEqual(response.status_code, 200)
+        response = self.client.get(url_for('readcategory'))
+        self.assertEqual(response.status_code, 200)
+        response = self.client.get(url_for('update_borrower'))
+        self.assertEqual(response.status_code, 200)
+        response = self.client.get(url_for('update_author'))
+        self.assertEqual(response.status_code, 200)
+
 
 
 
