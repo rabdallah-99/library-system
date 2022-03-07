@@ -4,17 +4,18 @@ a model for a school library system <br>
 Presentation: add link here <br>
 Trello: https://trello.com/b/a3rDk7LC/library-system <br>
 Website:   add url <br>
+github: https://github.com/rabdallah-99/library-system
 
-<h2> Contents </h2>
-1. Project Description and Requirements (An explanation of your app and how it fulfils the brief.)
-   1.1 Additional Requiremnts
-   1.2 My Approach   ( A technical description of how the application works.)
-2. Architecture
-   2.1 Database
-   2.2 CI/CD  ( technical description of how the pipeline works.)
-3. Project Management and Version Control
-4. Risk assessment
-5. Testing    report on the success and code coverage of your unit tests.
+<h2> Contents </h2> <br>
+1. Project Description and Requirements <br> (An explanation of your app and how it fulfils the brief.)
+   1.1 Additional Requiremnts <br>
+   1.2 My Approach  <br> ( A technical description of how the application works.)
+2. Architecture <br>
+   2.1 Database <br>
+   2.2 CI/CD  <br> ( technical description of how the pipeline works.)
+3. Project Management and Version Control <br>
+4. Risk assessment <br>
+5. Testing  <br>  report on the success and code coverage of your unit tests.
 6. 
 
 
