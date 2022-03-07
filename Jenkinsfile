@@ -7,9 +7,9 @@ pipeline {
     DOCKERHUB_CREDENTIALS = credentials('rihamm80-dockerhub')
         MYSQL_URI = credentials("MYSQL_URI")
         SECRET_KEY = credentials("SECRET_KEY")
-	MYSQL_USER= root
-	MYSQL_URL = mysql
-	MYSQL_DATABASE = library
+	MYSQL_USER= 'root'
+	MYSQL_URL = 'mysql'
+	MYSQL_DATABASE = 'library'
 	MYSQL_PASSWORD = credentials("MYSQL_PASSWORD")
   }
   stages {
