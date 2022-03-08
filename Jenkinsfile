@@ -11,6 +11,7 @@ pipeline {
 	MYSQL_URL = 'mysql'
 	MYSQL_DATABASE = 'library'
 	MYSQL_PASSWORD = credentials("MYSQL_PASSWORD")
+	MYSQL_TEST = credentials("MYSQL_TEST")
   }
   stages {
     stage('Build') {
@@ -20,20 +21,21 @@ pipeline {
  
       }
     }
+
+    stage('RUN') {
+      steps {
+        sh ' docker network create mynetwork '
+	    sh ' docker run -d --name mysql --network mynetwork databasemysql:8'
+	    sh 'docker run -d --name flask-app1 -p 5000:5000 --network mynetwork flask-library:latest '
+	    sh ' docker run -d --name nginx -p 80:80 --network mynetwork --mount type=bind,source=$(pwd)/nginx.conf,target=/etc/nginx/nginx.conf nginx:latest'
+      }
+    }
     stage('Test') {
        steps {
           sh ' bash test.sh  '
           sh ' echo testing'
            }
        }
-    stage('RUN') {
-      steps {
-        sh ' docker network create mynetwork '
-	sh ' docker run -d --name mysql --network mynetwork databasemysql:8'
-	sh 'docker run -d --name flask-app1 -p 5000:5000 --network mynetwork flask-library:latest '
-	sh ' docker run -d --name nginx -p 80:80 --network mynetwork --mount type=bind,source=$(pwd)/nginx.conf,target=/etc/nginx/nginx.conf nginx:latest'
-      }
-    }
   }
   post {
     always {

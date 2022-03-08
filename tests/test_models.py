@@ -3,6 +3,7 @@ from application import app, db
 from flask import url_for
 from application.models import Category, Author, Borrower, Books, Transaction
 from datetime import date, datetime
+from os import getenv
 
 # Create the base class
 
@@ -13,7 +14,8 @@ class TestBase(TestCase):
 
         # Pass in testing configurations for the app.
         # Here we use sqlite without a persistent database for our tests.
-        app.config.update(SQLALCHEMY_DATABASE_URI='mysql+pymysql://riham:root@127.0.0.1/test', SECRET_KEY='TEST_SECRET_KEY', DEBUG=True, WTF_CSRF_ENABLED=False)
+        mysqluri = getenv('MYSQL_TEST')
+        app.config.update(SQLALCHEMY_DATABASE_URI=mysqluri, SECRET_KEY='TEST_SECRET_KEY', DEBUG=True, WTF_CSRF_ENABLED=False)
         return app
 
     def setUp(self):
