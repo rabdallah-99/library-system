@@ -20,6 +20,12 @@ pipeline {
  
       }
     }
+    stage('Test') {
+       steps {
+          sh ' bash test.sh  '
+          sh ' echo testing'
+           }
+       }
     stage('RUN') {
       steps {
         sh ' docker network create mynetwork '
