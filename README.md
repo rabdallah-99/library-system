@@ -11,8 +11,8 @@ Risk assessment : add link here <br>
 1. <a href="#C1">Project Description and Requirements </a> <br> 
    1.1 <a href="#C2"> Additional Requirements  </a><br>
    1.2 <a href="#C3"> My Approach  </a> <br> ( A technical description of how the application works.)
-2. Architecture <br>
-   2.1 Database <br>
+2. <a href="#C4"> Architecture </a> <br>
+   2.1 Database Design <br>
    2.2 CI/CD  <br> ( technical description of how the pipeline works.)
 3. Project Management and Version Control <br>
 4. Risk assessment <br>
@@ -23,15 +23,25 @@ Risk assessment : add link here <br>
     - It was required to create a web application that integrates with a database and demonstrates CRUD functionality.<br>
     - To host and deploy the application using containers <br>
     - To create CI/CD pipeline that will test, build and deploy the application. <br>
-    1.1 <b id=C2> Additional Requirements </b> <br>
-    1.2 <b id=C3> My approach </b> <br>
-          My application is a library system for a school which have only one user (librarian).<br>
-          It has implemented CRUD by giving the ability to ADD, READ, UPDATE, DELETE any of the items that builds the system like books, authors, categories, borrowers...<br>
-        The CI/CD pipeline will be explained later, all the application components are containerised using docker.<br>
-        Unit Testing is applied with every push to the github repository using github webhooks to automate the testing process, build and deploy.<br><br>
+   <b  1.1 <b id=C2> Additional Requirements </b> <br>
+        Additional to the above requirements there were some deliverables were requested.<br> 
+            - A Trello board & Jira board derived from Trello. <br>
+            - A relational database, consisting of at least two tables that model a relationship.(ERD & Schema) <br>
+            - Documentation of the design phase, application architecture and risk assessment. <br>
+            - A python-based Flask application. <br>
+            - Test suites for the application. <br>
+            - Code hosted into a Version Control System to be built through a CI server and deployed to a cloud-based virtual machine. <br>
+   <b  1.2 id=C3> My approach </b> <br>
+           My application is a library system for a school which has a single user (librarian).<br>
+      It has implemented CRUD by giving the ability to ADD, READ, UPDATE, DELETE any of the items that builds the system like books, authors, categories, borrowers...<br>
+      The CI/CD pipeline will be explained later, all the application components are containerised using docker.<br>
+      Unit Testing is applied with every push to the github repository using github webhooks to automate the testing process, build and deploy.<br><br>
 
 
+2. <b id=C4> Architecture </b> <br>
+  <b id=C5 > 2.1 Database Design </b> <br>
          
+ <img src="analysis/a.png" alt="ERD mapping to tables" height="750" width="420"> 
 
 Any future improvements you would make.
 
