@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block body_content %}
+<h1>Login</h1>
+<div class="form-group">
+	<form method="POST" action="">
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                        {{ form.name.label }}
+                        {% if form.name.errors %}
+                                {{ form.name }}
+                                <div class="error">
+                                        {% for error in form.name.errors %}
+                                                <span>{{ error }}</span>
+                                        {% endfor %}
+                                </div>
+                        {% else %}
+                                {{ form.name }}
+                        {% endif %}
+                </div>
+                <br>
+                <div class="form-group">
+                        {{ form.password.label }}
+                        {% if form.password.errors %}
+                                {{ form.password }}
+                                <div class="error">
+                                        {% for error in form.password.errors %}
+                                                <span>{{ error }}</span>
+                                        {% endfor %}
+                                </div>
+                        {% else %}
+                                {{ form.password }}
+                        {% endif %}
+                </div>
+		<br>
+		
+		<div class="form-group">
+			{{ form.submit }}
+		</div>
+        </form>
+</div>
+{% endblock body_content %}
