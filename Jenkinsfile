@@ -16,7 +16,7 @@ pipeline {
     stage('Build') {
       steps {
         sh 'docker build -t databasemysql:8 database'
-	sh 'docker build -t flask-library:latest . '
+	    sh 'docker build -t flask-library:latest . '
  
       }
     }
