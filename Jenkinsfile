@@ -16,8 +16,8 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'docker build -t databasemysql:8 database'
-	    sh 'docker build -t flask-library:latest . '
+        sh 'docker build -t riham80/databasemysql:latest database'
+	    sh 'docker build -t riham80/flask-library:latest . '
  
       }
     }
@@ -30,12 +30,19 @@ pipeline {
 	    sh ' docker run -d --name nginx -p 80:80 --network mynetwork --mount type=bind,source=$(pwd)/nginx.conf,target=/etc/nginx/nginx.conf nginx:latest'
 
     }
-    /*stage('Test') {
+    stage('Push') {
+       steps {
+          sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+          sh ' docker push riham80/flask-library:latest'
+          sh ' docker push riham80/databasemysql:latest'
+           }
+       } 
+    stage('Test') {
        steps {
           sh ' bash test.sh  '
           sh ' echo testing'
            }
-       } */
+       } 
   }
   post {
     always {
