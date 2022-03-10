@@ -11,16 +11,16 @@ user = getenv('MYSQL_USER')
 mysqlpsswd = getenv('MYSQL_PASSWORD')
 mysqluri = getenv('MYSQL_URI')
 x = getenv('MYSQL_DATABASE')
-#secret = getenv('MYSQL_SECRETKEY')
+secret = getenv('MYSQL_SECRETKEY')
 mysql= MySQL()
 # don't forget to switch
 app.config['SQLALCHEMY_DATABASE_URI'] = mysqluri
-# Added security
-app.config['SECRET_KEY'] = 'jhhjhjh7878686'
+
+app.config['SECRET_KEY'] = getenv('SECRET_KEY')
 
 db = SQLAlchemy(app)
 app.config['MYSQL_DATABASE_USER'] = getenv('MYSQL_USER')   # default user of MySQL to be replaced with appropriate username
-app.config['MYSQL_DATABASE_PASSWORD'] = 'root'  # default password of MySQL to be replaced with appropriate password
+app.config['MYSQL_DATABASE_PASSWORD'] = mysqlpsswd  # default password of MySQL to be replaced with appropriate password
 app.config['MYSQL_DATABASE_DB'] = x # Database name to be replaced with appropriate database name
 app.config['MYSQL_DATABASE_HOST'] =getenv('MYSQL_URL')
 mysql.init_app(app)

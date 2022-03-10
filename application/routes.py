@@ -114,7 +114,7 @@ def readborrower():
 def readbook():
     conn = mysql.connect()
     cursor = conn.cursor()
-    cursor.execute('SELECT * FROM books')
+    cursor.execute('SELECT * FROM vbook')
     all_books = cursor.fetchall()
     headings = ("ID", "Book Name", "Author id", "Category id", "price", "count")
     conn.commit()
@@ -125,7 +125,7 @@ def readbook():
 def readtransaction():
     conn = mysql.connect()
     cursor = conn.cursor()
-    cursor.execute('SELECT * FROM transaction')
+    cursor.execute('SELECT * FROM borrowbook')
     all_transaction = cursor.fetchall()
     headings = ("ID", "Borrower", "Book", "Borrow date", "Return date", "status")
     return render_template('display.html', title='transactions', data=all_transaction, headings=headings)
@@ -286,3 +286,34 @@ def changecount():
     return render_template("modcount.html", joblist1=joblist1, form=form)
 
 
+@app.route('/returnbook', methods=['GET', 'POST'])
+def returnbook():
+    form = ReturnBook()
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    cursor.execute('SELECT borrower_id,borrower_name FROM borrower')
+    joblist = cursor.fetchall()
+    form.borrower_id.choices = [(h[0], h[1]) for h in joblist]
+    cursor.execute('SELECT book_id,book_name FROM books ')
+    joblist1 = cursor.fetchall()
+    form.book_id.choices = [(h[0], h[1]) for h in joblist1]
+    form.status.choices = [('O', 'OUT'), ('L', 'Late'), ('R', 'Returned')]
+    if form.validate_on_submit():
+        tr = Transaction.query.filter_by(book_id=form.book_id.data, borrower_id=form.borrower.data, status='O' )
+        Transaction.query.filter_by(transaction_id=tr.transaction_id).update(status='R')
+        book1 = Books.query.filter_by(book_id=form.book_id.data).first()
+        Books.query.filter_by(book_id=form.book_id.data).update(dict(count=book1.count+1))
+        db.session.commit()
+    else:
+        print(form.errors)
+    return render_template("transaction.html", joblist=joblist, joblist1=joblist1, form=form)
+
+
+@app.route('/findlate', methods=['GET', 'POST'])
+def searchlate():
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM transaction   WHERE borrow_date +7 < CURDATE()  AND status= 'O'")
+    all_authors = cursor.fetchall()
+    headings = ("ID", "Borrower", "Book", "Borrow date", "Return date", "status")
+    return render_template('display.html', title='Authors', data=all_authors, headings=headings)

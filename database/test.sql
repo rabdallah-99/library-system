@@ -26,6 +26,11 @@ FOREIGN KEY (author_id) REFERENCES author(author_id),
 FOREIGN KEY (category_id) REFERENCES category(category_id)
 );
 
+CREATE OR REPLACE VIEW  vbook AS SELECT books.book_id, books.book_name, author.author_name, category.category_name,
+books.price, books.count FROM books
+JOIN category ON category.category_id = books.category_id
+JOIN author ON author.author_id = books.author_id  ;
+
 CREATE TABLE login(
 user_id int NOT NULL AUTO_INCREMENT,
 user_name varchar(50) NOT NULL,
