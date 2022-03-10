@@ -28,7 +28,7 @@ pipeline {
 	    sh ' docker run -d --name mysql --network mynetwork databasemysql:8'
 	    sh 'docker run -d --name flask-app1 -p 5000:5000 --network mynetwork flask-library:latest '
 	    sh ' docker run -d --name nginx -p 80:80 --network mynetwork --mount type=bind,source=$(pwd)/nginx.conf,target=/etc/nginx/nginx.conf nginx:latest'
-
+        }
     }
     stage('Push') {
        steps {
@@ -43,7 +43,7 @@ pipeline {
           sh ' echo testing'
            }
        } 
-  }
+  } //stages
   post {
     always {
 	junit 'junit_report.xml'
@@ -52,4 +52,4 @@ pipeline {
     }
   }
 
-}  
+} //pipeline
