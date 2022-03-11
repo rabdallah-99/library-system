@@ -41,7 +41,8 @@ pipeline {
           sh ' bash test.sh  '
           sh ' echo testing'
            }
-       } 
+       }
+
   } //stages
   post {
     always {
