@@ -5,17 +5,19 @@ Presentation: add link here <br>
 Trello: https://trello.com/b/a3rDk7LC/library-system <br>
 Website:   add url <br>
 github: https://github.com/rabdallah-99/library-system
-Risk assessment : add link here <br>
+Risk assessment : https://docs.google.com/spreadsheets/d/1HR6_C_aUr2cwk9Qm1NOSY2wIZ9z--q5OoUCK4qK1BbU/edit#gid=0 <br>
 
 <h2> Contents </h2> <br>
 1. <a href="#C1">Project Description and Requirements </a> <br> 
    1.1 <a href="#C2"> Additional Requirements  </a><br>
    1.2 <a href="#C3"> My Approach  </a> <br> 
 2. <a href="#C4"> Architecture </a> <br>
-   2.1 Database Design <br>
-   2.2 CI/CD  <br> 
-3. Project Management and Version Control <br>
-4. Risk assessment <br>
+   2.1 <a href="#C5"> Design </a> <br>
+   2.2 <a href="#C6">CD </a> <br> 
+3. <a href="#C7"> Management and Version Control </a><br>
+    3.1 <a href="#B2"> Project Tracking </a> <br>
+    3.2 <a href="=#B1"> Use Cases </a> <br>
+4. <a href="#C8">Risk assessment </a> <br>
 5. Testing  <br>  report on the success and code coverage of your unit tests. <br>
 6. 
 
@@ -43,12 +45,26 @@ Risk assessment : add link here <br>
          
  <img src="analysis/a.png" alt="ERD mapping to tables" height="750" width="420"> 
 
-Any future improvements you would make.
+3. <b id=C7> Management and Version Control </b> <br>
+    3.1 <b id=B2> Project Tracking </b> <br>
+ <img src="figures/trello.png" alt=" Trello board"
+    3.2 <b id=B1> Use Cases </b<br>
+   The below use cases were used to create the first MVP for the project <br>
+    - As a librarian I want to be  able to add borrow transaction so that I keep log of borrowed books <br>
+    - As a librarian I want to be able to add new books to the library so that they appear in the system <br>
+    - As a librarian I want to be able to modify any data entry error <br>
+    - As a librarian I want to be able to return borrowed book so they become available for borrowing <br>
+    - As a borrower I want to see the available books so I can choose from them <br>
+    - As a librarian I want to see a list of late books so I can take action <br>
+ 
 
-You must use diagrams to illustrate your work as much as possible and opt for a succinct writing style. Examples of diagrams to include are:
 
+4. <b id=C8> Risk Assessment </b> <br>
+   The risk assessment is found on https://docs.google.com/spreadsheets/d/1HR6_C_aUr2cwk9Qm1NOSY2wIZ9z--q5OoUCK4qK1BbU/edit#gid=0, a screenshot is found below 
+<img src="figures/risk.png" alt="Risk Assessment"  >
     Entity Relationship Diagram (ERD).
     A full CI/CD pipeline diagram.
     An infrastructure diagram, illustrating the cloud resources and how they network together.
     A component-level diagram, illustrating how the application interfaces with the database.
 
+Any future improvements you would make.
