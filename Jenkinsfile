@@ -36,12 +36,12 @@ pipeline {
           sh ' docker push riham80/databasemysql:latest'
            }
        } 
-    /*stage('Test') {
+    stage('Test') {
        steps {
           sh ' bash test.sh  '
           sh ' echo testing'
            }
-       } */
+       } 
   } //stages
   post {
     always {
