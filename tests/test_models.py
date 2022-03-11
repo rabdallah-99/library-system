@@ -16,6 +16,7 @@ class TestBase(TestCase):
         # Here we use sqlite without a persistent database for our tests.
         mysqluri = getenv('MYSQL_TEST')
         app.config.update(SQLALCHEMY_DATABASE_URI=mysqluri, SECRET_KEY='TEST_SECRET_KEY', DEBUG=True, WTF_CSRF_ENABLED=False)
+        #app.config.update(SQLALCHEMY_DATABASE_URI="sqlite:///data.db", SECRET_KEY='TEST_SECRET_KEY', DEBUG=True, WTF_CSRF_ENABLED=False)
         return app
 
     def setUp(self):
@@ -106,9 +107,9 @@ class TestRoutes (TestBase):
         self.assertEqual(response.status_code, 200)
         response = self.client.get(url_for('addBorrower'))
         self.assertEqual(response.status_code, 200)
-        response = self.client.get(url_for('addbook'))
+        response = self.client.get(url_for('add_category'))
         self.assertEqual(response.status_code, 200)
-        response = self.client.get(url_for('changeprice'))
+        response = self.client.get(url_for('add_author'))
         self.assertEqual(response.status_code, 200)
 
 
