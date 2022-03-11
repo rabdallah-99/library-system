@@ -69,7 +69,7 @@ class TestRoutes (TestBase):
         self.assertEqual(response.status_code, 200)
         response = self.client.get(url_for('readborrower'))
         self.assertEqual(response.status_code, 200)
-        response = self.client.get(url_for('addtransaction'))
+        response = self.client.get(url_for('borrowbook'))
         self.assertEqual(response.status_code, 200)
         response = self.client.get(url_for('delete_category'))
         self.assertEqual(response.status_code, 200)
@@ -98,6 +98,12 @@ class TestRoutes (TestBase):
         self.assertEqual(response.status_code, 200)
         response = self.client.get(url_for('update_author'))
         self.assertEqual(response.status_code, 200)
+        response = self.client.get(url_for('searchlate'))
+        self.assertEqual(response.status_code, 200)
+        response = self.client.get(url_for('changecount'))
+        self.assertEqual(response.status_code, 200)
+
+
 
 
 
