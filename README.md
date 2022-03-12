@@ -19,6 +19,8 @@ Risk assessment : https://docs.google.com/spreadsheets/d/1HR6_C_aUr2cwk9Qm1NOSY2
     3.2 <a href="=#B1"> Use Cases </a> <br>
 4. <a href="#C8">Risk assessment </a> <br>
 5. Testing  <br>  report on the success and code coverage of your unit tests. <br>
+    Testing is a crucial part of software development. The pytest framework makes it easy to write small, readable tests,and can scale to support complex functional testing for applications and libraries.
+  <img src=""figures/coverage.png" alt="Coverage report"> <br>
 6. 
 
 1.<b id=C1> Project Description and Requirements </b><br>
@@ -54,7 +56,7 @@ Backlog: This list is the start of the project it contained all the items which 
 User stories: This list contained the functionality that is required to be performed which helps in the coding stage. <br>
 To Do : This list contains all items that need to be done but didn't start yet. <br>
 Doing:  This list contains all the open items which are currently under development. <br>
-Testing: This list contains the items which completed its development and waiting for their unit testing.
+Testing: This list contains the items which completed its development and waiting for their unit testing.<br>
 Done: this list contains all the finished items. <br>
     3.2 <b id=B1> Use Cases </b> <br>
    The below use cases were used to create the first MVP for the project <br>
