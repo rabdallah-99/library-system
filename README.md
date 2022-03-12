@@ -4,7 +4,7 @@ a model for a school library system <br>
 Presentation: add link here <br>
 Trello: https://trello.com/b/a3rDk7LC/library-system <br>
 Website:   add url <br>
-github: https://github.com/rabdallah-99/library-system
+github: https://github.com/rabdallah-99/library-system <br>
 Risk assessment : https://docs.google.com/spreadsheets/d/1HR6_C_aUr2cwk9Qm1NOSY2wIZ9z--q5OoUCK4qK1BbU/edit#gid=0 <br>
 
 <h2> Contents </h2> <br>
@@ -33,7 +33,7 @@ Risk assessment : https://docs.google.com/spreadsheets/d/1HR6_C_aUr2cwk9Qm1NOSY2
             - Documentation of the design phase, application architecture and risk assessment. <br>
             - A python-based Flask application. <br>
             - Test suites for the application. <br>
-            - Code hosted into a Version Control System to be built through a CI server and deployed to a cloud-based virtual machine. <br>
+            - Code hosted into a Version Control System to be built through a CI server and deployed to a cloud-based virtual machine. <br><br>
     1.2 <b id=C3> My approach </b> <br>
            My application is a library system for a school which has a single user (librarian).<br>
       It has implemented CRUD by giving the ability to ADD, READ, UPDATE, DELETE any of the items that builds the system like books, authors, categories, borrowers...<br>
@@ -50,7 +50,7 @@ To facilitate the queries and the operations two views were created by joining t
 view vbook was created by joining books, category and authors table. <br>
 view borrowbook joins tables transaction, books and borrower. <br> <br>
     2.2 <b id=C6> CI/CD Pipeline </b> <br>
-<img src=""  alt="CI/CD pipeline">
+<img src="figures/CI.png"  alt="CI/CD pipeline">
 <p >The figure above is the continuous integration pipeline with the associated frameworks and services related to them. This pipeline allows for rapid and simple development-to-deployment by automating the integration process. <br>
 
 Code is written on local machine and pushed to GitHub, which will automatically push the new code to Jenkins via a webhook to be automatically installed on the cloud virtual machine and build docker images and push them to docker hub. From there, tests are automatically run and reports are produced. A testing environment for the app is also run in debugger mode, allowing for dynamic testing. Jenkins deploy docker stack on remote node </p>
@@ -76,7 +76,7 @@ Done: this list contains all the finished items. <br>
     - As a librarian I want to see a list of late books, so I can take action <br>
 
  3.3 <b id=B3> Version Control </b> <br>
-    git was used as the version control and the code was uploaded to github repository. The repository consists of many feature branches to separate the functionality. 
+    git was used as the version control and the code was uploaded to github repository. The repository consists of many feature branches to separate the functionality.<br> 
 4. <b id=C8> Risk Assessment </b> <br>
    The risk assessment is found on https://docs.google.com/spreadsheets/d/1HR6_C_aUr2cwk9Qm1NOSY2wIZ9z--q5OoUCK4qK1BbU/edit#gid=0, a screenshot is found below  
 <img src="figures/risk.png" alt="Risk Assessment"  >
