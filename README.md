@@ -18,7 +18,7 @@ Risk assessment : https://docs.google.com/spreadsheets/d/1HR6_C_aUr2cwk9Qm1NOSY2
     3.3 <a href="B3"> Version Control </a><br>
 4. <a href="#C8">Risk assessment </a> <br>
 5. <a href="#C9"> Testing </a> <br>  <br> 
-6. 
+6. <a href="#C10"> Flask Application Guide </a><br>  
 
 1.<b id=C1> Project Description and Requirements </b><br>
     - It was required to create a web application that integrates with a database and demonstrates CRUD functionality.<br>
@@ -35,11 +35,11 @@ Risk assessment : https://docs.google.com/spreadsheets/d/1HR6_C_aUr2cwk9Qm1NOSY2
     1.2 <b id=C3> My approach </b> <br>
            <p> My application is a library system for a school which has a single user (librarian).<br>
       It has implemented CRUD by giving the ability to ADD, READ, UPDATE, DELETE any of the items that builds the system like books, authors, ...etc, which will be explained as below.<br>
-      The application statisfy "CRUD" functionality by having the following capabilities.
+      The application statisfy "CRUD" functionality by having the following capabilities. <br>
         - Add Book , Add Category, Add Author, Add Borrower and Add transaction(Borrow book) all these statisfy "Create". <br>
         - Display books, Display Categories, Display Authors, Display Borrowers and Display transactions, all these satisfy "Read". <br>
         - Update books, Update Categories, Update Authors and Update Borrowers, all these satisfy "Update". <br>
-        - Delete books, Delete Category, Delete Authors and Delete Borrower all these satisfy "Delete". <br>
+        - Delete books, Delete Category, Delete Authors and Delete Borrower all these satisfy "Delete". <br><br>
       The CI/CD pipeline will be explained later, all the application components are containerised using docker.<br>
       Unit Testing is applied with every push to the github repository using github webhooks to automate the testing process, build and deploy.</p> <br><br>
 
@@ -89,5 +89,19 @@ Done: this list contains all the finished items. <br> <br>
 Testing is a crucial part of software development. The pytest framework makes it easy to write small, readable tests,and can scale to support complex functional testing for applications and libraries.
   
 <img src="figures/coverage.png" alt="Coverage report"> <br>
-   
+
+6. <b id=C10> Flask Application Guide</b><br>
+  As mentioned above about the CRUD functionality satisfied,the below screenshots show a part of the application functionality. <br>
+  The application front-end is mainly html there is no css or javascript used thus the very simple appearance.<br>
+<b> Add Category </b>
+<img src="figures/addcategory.png" alt="Add Category">
+
+   <b> Add Book </b>
+<img src="figures/addbook.png" alt="Add book">
+
+<b> Display Category </b>
+<img src="figures/dispcat.png" alt="Display Category">
+
+   <b> Display transaction </b>
+<img src="figures/dispcat" alt="Display Transaction">
     
