@@ -46,7 +46,7 @@ Risk assessment : https://docs.google.com/spreadsheets/d/1HR6_C_aUr2cwk9Qm1NOSY2
          
  <img src="analysis/a.png" alt="ERD mapping to tables" height="750" width="600"> 
 As shown in the database mapping diagram that there are many relations between tables and there is many-many relation between books and borrower tables. All the tables in the diagram were implemented except for table login.
-To facilitate the queries and the operations two views were created by joining three tables there details are as below:
+To facilitate the queries and the operations two views were created by joining three tables there details are as below:<br>
 view vbook was created by joining books, category and authors table. <br>
 view borrowbook joins tables transaction, books and borrower. <br> <br>
     2.2 <b id=C6> CI/CD Pipeline </b> <br>
@@ -54,7 +54,8 @@ view borrowbook joins tables transaction, books and borrower. <br> <br>
 <p >The figure above is the continuous integration pipeline with the associated frameworks and services related to them. This pipeline allows for rapid and simple development-to-deployment by automating the integration process. <br>
 
 Code is written on local machine and pushed to GitHub, which will automatically push the new code to Jenkins via a webhook to be automatically installed on the cloud virtual machine and build docker images and push them to docker hub. From there, tests are automatically run and reports are produced. A testing environment for the app is also run in debugger mode, allowing for dynamic testing. Jenkins deploy docker stack on remote node </p>
-  
+<img src="figures/infra.png"  alt="infrastructure diagram">
+<img src="figures/tier.png"  alt="tier components diagram">
 3. <b id=C7> Management and Version Control </b> <br>
     3.1 <b id=B2> Project Tracking </b> <br>
         Trello was used to keep track of what is done and what is still not complete as shown below. <br>
