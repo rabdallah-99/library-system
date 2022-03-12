@@ -17,9 +17,9 @@ Risk assessment : https://docs.google.com/spreadsheets/d/1HR6_C_aUr2cwk9Qm1NOSY2
 3. <a href="#C7"> Management and Version Control </a><br>
     3.1 <a href="#B2"> Project Tracking </a> <br>
     3.2 <a href="=#B1"> Use Cases </a> <br>
+    3.3 <a href="B3"> Version Control </a><br>
 4. <a href="#C8">Risk assessment </a> <br>
-5. <a href="#C9"> Testing </a> <br>  <br>
-    
+5. <a href="#C9"> Testing </a> <br>  <br> 
 6. 
 
 1.<b id=C1> Project Description and Requirements </b><br>
@@ -75,7 +75,8 @@ Done: this list contains all the finished items. <br>
     - As a borrower I want to see the available books so I can choose from them <br>
     - As a librarian I want to see a list of late books so I can take action <br>
 
-
+ 3.3 <b id=B3> Version Control </b> <br>
+    git was used as the version control and the code was uploaded to github repository. The repository consists of many feature branches to separate the functionality 
 4. <b id=C8> Risk Assessment </b> <br>
    The risk assessment is found on https://docs.google.com/spreadsheets/d/1HR6_C_aUr2cwk9Qm1NOSY2wIZ9z--q5OoUCK4qK1BbU/edit#gid=0, a screenshot is found below 
 <img src="figures/risk.png" alt="Risk Assessment"  >
