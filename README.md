@@ -51,9 +51,9 @@ view vbook was created by joining books, category and authors table. <br>
 view borrowbook joins tables transaction, books and borrower. <br> <br>
     2.2 <b id=C6> CI/CD Pipeline </b> <br>
 <img src=""  alt="CI/CD pipeline">
-<b >The figure above is the continuous integration pipeline with the associated frameworks and services related to them. This pipeline allows for rapid and simple development-to-deployment by automating the integration process. <br>
+<p >The figure above is the continuous integration pipeline with the associated frameworks and services related to them. This pipeline allows for rapid and simple development-to-deployment by automating the integration process. <br>
 
-Code is written on local machine and pushed to GitHub, which will automatically push the new code to Jenkins via a webhook to be automatically installed on the cloud virtual machine and build docker images and push them to docker hub. From there, tests are automatically run and reports are produced. A testing environment for the app is also run in debugger mode, allowing for dynamic testing. Jenkins deploy docker stack on remote node </b>
+Code is written on local machine and pushed to GitHub, which will automatically push the new code to Jenkins via a webhook to be automatically installed on the cloud virtual machine and build docker images and push them to docker hub. From there, tests are automatically run and reports are produced. A testing environment for the app is also run in debugger mode, allowing for dynamic testing. Jenkins deploy docker stack on remote node </p>
   
 3. <b id=C7> Management and Version Control </b> <br>
     3.1 <b id=B2> Project Tracking </b> <br>
@@ -71,19 +71,20 @@ Done: this list contains all the finished items. <br>
     - As a librarian I want to be  able to add borrow transaction so that I keep log of borrowed books <br>
     - As a librarian I want to be able to add new books to the library so that they appear in the system <br>
     - As a librarian I want to be able to modify any data entry error <br>
-    - As a librarian I want to be able to return borrowed book so they become available for borrowing <br>
-    - As a borrower I want to see the available books so I can choose from them <br>
-    - As a librarian I want to see a list of late books so I can take action <br>
+    - As a librarian I want to be able to return borrowed book, so they become available for borrowing <br>
+    - As a borrower I want to see the available books, so I can choose from them <br>
+    - As a librarian I want to see a list of late books, so I can take action <br>
 
  3.3 <b id=B3> Version Control </b> <br>
     git was used as the version control and the code was uploaded to github repository. The repository consists of many feature branches to separate the functionality. 
 4. <b id=C8> Risk Assessment </b> <br>
-   The risk assessment is found on https://docs.google.com/spreadsheets/d/1HR6_C_aUr2cwk9Qm1NOSY2wIZ9z--q5OoUCK4qK1BbU/edit#gid=0, a screenshot is found below 
+   The risk assessment is found on https://docs.google.com/spreadsheets/d/1HR6_C_aUr2cwk9Qm1NOSY2wIZ9z--q5OoUCK4qK1BbU/edit#gid=0, a screenshot is found below  
 <img src="figures/risk.png" alt="Risk Assessment"  >
 
 5. <b id=C9 > Testing </b> <br>
 Testing is a crucial part of software development. The pytest framework makes it easy to write small, readable tests,and can scale to support complex functional testing for applications and libraries.
-  <img src="figures/coverage.png" alt="Coverage report"> <br>
+  
+<img src="figures/coverage.png" alt="Coverage report"> <br>
    
     Entity Relationship Diagram (ERD).
     A full CI/CD pipeline diagram.
