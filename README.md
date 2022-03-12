@@ -13,12 +13,12 @@ Risk assessment : https://docs.google.com/spreadsheets/d/1HR6_C_aUr2cwk9Qm1NOSY2
    1.2 <a href="#C3"> My Approach  </a> <br> 
 2. <a href="#C4"> Architecture </a> <br>
    2.1 <a href="#C5"> Design </a> <br>
-   2.2 <a href="#C6">CD </a> <br> 
+   2.2 <a href="#C6">CI/CD pipeline </a> <br> 
 3. <a href="#C7"> Management and Version Control </a><br>
     3.1 <a href="#B2"> Project Tracking </a> <br>
     3.2 <a href="=#B1"> Use Cases </a> <br>
 4. <a href="#C8">Risk assessment </a> <br>
-5. Testing  <br>  report on the success and code coverage of your unit tests. <br>
+5. <a href="#C9"> Testing </a> <br>  <br>
     
 6. 
 
@@ -45,7 +45,16 @@ Risk assessment : https://docs.google.com/spreadsheets/d/1HR6_C_aUr2cwk9Qm1NOSY2
    2.1 <b id=C5 >Database Design </b> <br>
          
  <img src="analysis/a.png" alt="ERD mapping to tables" height="750" width="600"> 
+As shown in the database mapping diagram that there are many relations between tables and there is many-many relation between books and borrower tables. All the tables in the diagram were implemented except for table login.
+To facilitate the queries and the operations two views were created by joining three tables there details are as below:
+view vbook was created by joining books, category and authors table. <br>
+view borrowbook joins tables transaction, books and borrower. <br> <br>
+    2.2 <b id=C6> CI/CD Pipeline </b> <br>
+<img src=""  alt="CI/CD pipeline">
+<b >The figure above is the continuous integration pipeline with the associated frameworks and services related to them. This pipeline allows for rapid and simple development-to-deployment by automating the integration process. <br>
 
+Code is written on local machine and pushed to GitHub, which will automatically push the new code to Jenkins via a webhook to be automatically installed on the cloud virtual machine and build docker images and push them to docker hub. From there, tests are automatically run and reports are produced. A testing environment for the app is also run in debugger mode, allowing for dynamic testing. </b>
+  
 3. <b id=C7> Management and Version Control </b> <br>
     3.1 <b id=B2> Project Tracking </b> <br>
         Trello was used to keep track of what is done and what is still not complete as shown below. <br>
