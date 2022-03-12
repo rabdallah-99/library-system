@@ -93,15 +93,20 @@ Testing is a crucial part of software development. The pytest framework makes it
 6. <b id=C10> Flask Application Guide</b><br>
   As mentioned above about the CRUD functionality satisfied,the below screenshots show a part of the application functionality. <br>
   The application front-end is mainly html there is no css or javascript used thus the very simple appearance.<br>
-<b> Add Category </b>
-<img src="figures/addcategory.png" alt="Add Category">
+<b style="color:red"> Add Category </b>
+<img src="figures/add category.png" alt="Add Category">
 
-   <b> Add Book </b>
-<img src="figures/addbook.png" alt="Add book">
+   <b style="color:red"> Add Book </b>
+<img src="figures/add book.png" alt="Add book">
 
-<b> Display Category </b>
+<b style="color:red"> Display Category </b>
 <img src="figures/dispcat.png" alt="Display Category">
 
-   <b> Display transaction </b>
-<img src="figures/dispcat" alt="Display Transaction">
+   <b style="color:red"> Display transaction </b>
+<img src="figures/disptrans.png" alt="Display Transaction">
     
+<b style="color:red"> Delete Category </b>
+<img src="figures/delcat.png" alt="Delete Category">
+
+   <b style="color:red"> Uodate Book </b>
+<img src="figures/updatebook.png" alt="Update Book">
