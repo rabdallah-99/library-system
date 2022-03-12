@@ -314,7 +314,7 @@ def returnbook():
 def searchlate():
     conn = mysql.connect()
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM transaction   WHERE borrow_date +7 < CURDATE()  AND status= 'O'")
+    cursor.execute("SELECT * FROM borrowbook   WHERE borrow_date +7 < CURDATE()  AND status= 'O'")
     all_authors = cursor.fetchall()
     headings = ("ID", "Borrower", "Book", "Borrow date", "Return date", "status")
     return render_template('display.html', title='Authors', data=all_authors, headings=headings)

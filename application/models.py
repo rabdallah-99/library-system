@@ -22,16 +22,6 @@ class Author(db.Model):
     author_id = db.Column(db.Integer, primary_key=True)
     author_name = db.Column(db.String(50), nullable=False)
 
-    def getauthor(self, d1):
-        statement = 'SELECT author_name FROM author WHERE author_id=' + id1
-        self.author_name = db.Query.execute(statement)
-        return self
-
-    def updateauthor(self, id1, name):
-        statement = "UPDATE author SET author_name=" + name + "WHERE author_id=" + id1
-        db.Query.execute(statement)
-        return "author updated"
-
     
 class Borrower(db.Model):
     borrower_id = db.Column(db.Integer, primary_key=True)

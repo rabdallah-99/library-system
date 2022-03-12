@@ -116,7 +116,11 @@ Testing is a crucial part of software development. The pytest framework makes it
  <b style="color:red"> Display late Books </b>
 <img src="figures/late.png" alt="Late Book">
 
+<b style="color:red"> Return Books </b>
+<img src="figures/return.png" alt="Return Book">
+
 7. <b id=C11> Known issues </b><br>
+   <p> I didn't manage to finish the login module so this website doesn't have any authentication method currently. I need to add more validation on data entry. Add Search feature
 8. <b id=C12> Author </b><br>
 Riham Ahmed 
 
