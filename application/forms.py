@@ -95,6 +95,6 @@ class UpdateCount(FlaskForm):
 class ReturnBook(FlaskForm):
     borrower_id = SelectField('Borrower Name', coerce=int)
     book_id = SelectField('Book Name', coerce=int)
-    return_date = DateField('Return date',format='%Y-%m-%d')
+
     status = SelectField('status')
     submit = SubmitField('Return Book')

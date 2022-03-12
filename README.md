@@ -17,8 +17,10 @@ Risk assessment : https://docs.google.com/spreadsheets/d/1HR6_C_aUr2cwk9Qm1NOSY2
     3.2 <a href="=#B1"> Use Cases </a> <br>
     3.3 <a href="B3"> Version Control </a><br>
 4. <a href="#C8">Risk assessment </a> <br>
-5. <a href="#C9"> Testing </a> <br>  <br> 
+5. <a href="#C9"> Testing </a> <br>  <br>   
 6. <a href="#C10"> Flask Application Guide </a><br>  
+7. <a href="#C11"> Known Issues </a><br>
+8. <a href="#C12"> Author </a><br>
 
 1.<b id=C1> Project Description and Requirements </b><br>
     - It was required to create a web application that integrates with a database and demonstrates CRUD functionality.<br>
@@ -108,5 +110,13 @@ Testing is a crucial part of software development. The pytest framework makes it
 <b style="color:red"> Delete Category </b>
 <img src="figures/delcat.png" alt="Delete Category">
 
-   <b style="color:red"> Uodate Book </b>
+   <b style="color:red"> Update Book </b>
 <img src="figures/updatebook.png" alt="Update Book">
+
+ <b style="color:red"> Display late Books </b>
+<img src="figures/late.png" alt="Late Book">
+
+7. <b id=C11> Known issues </b><br>
+8. <b id=C12> Author </b><br>
+Riham Ahmed 
+

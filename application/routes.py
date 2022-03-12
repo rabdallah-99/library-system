@@ -299,14 +299,15 @@ def returnbook():
     form.book_id.choices = [(h[0], h[1]) for h in joblist1]
     form.status.choices = [('O', 'OUT'), ('L', 'Late'), ('R', 'Returned')]
     if form.validate_on_submit():
-        tr = Transaction.query.filter_by(book_id=form.book_id.data, borrower_id=form.borrower.data, status='O' )
-        Transaction.query.filter_by(transaction_id=tr.transaction_id).update(status='R')
+        tr = Transaction.query.filter_by(book_id=form.book_id.data, borrower_id=form.borrower_id.data, status='O' ).first()
+        Transaction.query.filter_by(transaction_id=tr.transaction_id).update(dict(status='R'))
+        db.session.commit()
         book1 = Books.query.filter_by(book_id=form.book_id.data).first()
         Books.query.filter_by(book_id=form.book_id.data).update(dict(count=book1.count+1))
         db.session.commit()
     else:
         print(form.errors)
-    return render_template("transaction.html", joblist=joblist, joblist1=joblist1, form=form)
+    return render_template("transaction1.html", joblist=joblist, joblist1=joblist1, form=form)
 
 
 @app.route('/findlate', methods=['GET', 'POST'])

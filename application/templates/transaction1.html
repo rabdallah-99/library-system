@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block body_content %}
+{{ form.hidden_tag() }}
+<h1>Transaction</h1>
+<div class="form-group">
+	<form method="POST" action="">
+                {{ form.hidden_tag() }}
+
+                <div class="form-group">
+                    {{ form.borrower_id.label }} {{ form.borrower_id}}<br>
+                    {{ form.book_id.label }} {{ form.book_id }}<br>
+                    {{ form.status.label }} {{ form.status}}<br>
+
+                </div>
+        <br>
+
+		<div class="form-group">
+			{{ form.submit }}
+		</div>
+    </form>
+</div>
+{% endblock body_content %}
