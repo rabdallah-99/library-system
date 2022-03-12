@@ -60,5 +60,14 @@ FOREIGN KEY (borrower_id) REFERENCES borrower(borrower_id)
 );
 
 
+CREATE OR REPLACE VIEW  vbook AS SELECT books.book_id, books.book_name, author.author_name, category.category_name,
+books.price, books.count FROM books
+JOIN category ON category.category_id = books.category_id
+JOIN author ON author.author_id = books.author_id  ;
 
+CREATE OR REPLACE VIEW  borrowbook AS SELECT transaction.transaction_id, borrower.borrower_name, books.book_name,
+transaction.borrow_date, transaction.return_date, transaction.status
+FROM transaction
+JOIN books ON transaction.book_id = books.book_id
+JOIN borrower ON transaction.borrower_id = borrower.borrower_id  ;
 

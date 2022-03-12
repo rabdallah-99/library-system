@@ -1,9 +1,7 @@
 # library-system <br>
 a model for a school library system <br>
 <h2> Resources: </h2><br>
-Presentation: add link here <br>
 Trello: https://trello.com/b/a3rDk7LC/library-system <br>
-Website:   add url <br>
 github: https://github.com/rabdallah-99/library-system <br>
 Risk assessment : https://docs.google.com/spreadsheets/d/1HR6_C_aUr2cwk9Qm1NOSY2wIZ9z--q5OoUCK4qK1BbU/edit#gid=0 <br>
 
@@ -35,10 +33,15 @@ Risk assessment : https://docs.google.com/spreadsheets/d/1HR6_C_aUr2cwk9Qm1NOSY2
             - Test suites for the application. <br>
             - Code hosted into a Version Control System to be built through a CI server and deployed to a cloud-based virtual machine. <br><br>
     1.2 <b id=C3> My approach </b> <br>
-           My application is a library system for a school which has a single user (librarian).<br>
-      It has implemented CRUD by giving the ability to ADD, READ, UPDATE, DELETE any of the items that builds the system like books, authors, categories, borrowers...<br>
+           <p> My application is a library system for a school which has a single user (librarian).<br>
+      It has implemented CRUD by giving the ability to ADD, READ, UPDATE, DELETE any of the items that builds the system like books, authors, ...etc, which will be explained as below.<br>
+      The application statisfy "CRUD" functionality by having the following capabilities.
+        - Add Book , Add Category, Add Author, Add Borrower and Add transaction(Borrow book) all these statisfy "Create". <br>
+        - Display books, Display Categories, Display Authors, Display Borrowers and Display transactions, all these satisfy "Read". <br>
+        - Update books, Update Categories, Update Authors and Update Borrowers, all these satisfy "Update". <br>
+        - Delete books, Delete Category, Delete Authors and Delete Borrower all these satisfy "Delete". <br>
       The CI/CD pipeline will be explained later, all the application components are containerised using docker.<br>
-      Unit Testing is applied with every push to the github repository using github webhooks to automate the testing process, build and deploy.<br><br>
+      Unit Testing is applied with every push to the github repository using github webhooks to automate the testing process, build and deploy.</p> <br><br>
 
 
 2. <b id=C4> Architecture </b> <br>
@@ -53,10 +56,10 @@ view borrowbook joins tables transaction, books and borrower. <br> <br>
 <img src="figures/CI.png"  alt="CI/CD pipeline">
 <p >The figure above is the continuous integration pipeline with the associated frameworks and services related to them. This pipeline allows for rapid and simple development-to-deployment by automating the integration process. <br>
 
-Code is written on local machine and pushed to GitHub, which will automatically push the new code to Jenkins via a webhook to be automatically installed on the cloud virtual machine and build docker images and push them to docker hub. From there, tests are automatically run and reports are produced. A testing environment for the app is also run in debugger mode, allowing for dynamic testing. Jenkins deploy docker stack on remote node </p>
+Code is written on local machine and pushed to GitHub, which will automatically push the new code to Jenkins via a webhook to be automatically installed on the cloud virtual machine and build docker images and push them to docker hub. From there, tests are automatically run and reports are produced. A testing environment for the app is also run in debugger mode, allowing for dynamic testing. Jenkins deploy docker stack on remote node , the stack contains two services the flask app and mysql database </p>
 <img src="figures/infra.png"  alt="infrastructure diagram">
 <img src="figures/tier.png"  alt="tier components diagram">
-3. <b id=C7> Management and Version Control </b> <br>
+3. <b id=C7> Management and Version Control </b> <br> <br>
     3.1 <b id=B2> Project Tracking </b> <br>
         Trello was used to keep track of what is done and what is still not complete as shown below. <br>
  <img src="figures/trello.png" alt=" Trello board" > <br>
@@ -66,7 +69,7 @@ User stories: This list contained the functionality that is required to be perfo
 To Do : This list contains all items that need to be done but didn't start yet. <br>
 Doing:  This list contains all the open items which are currently under development. <br>
 Testing: This list contains the items which completed its development and waiting for their unit testing.<br>
-Done: this list contains all the finished items. <br>
+Done: this list contains all the finished items. <br> <br>
     3.2 <b id=B1> Use Cases </b> <br>
    The below use cases were used to create the first MVP for the project <br>
     - As a librarian I want to be  able to add borrow transaction so that I keep log of borrowed books <br>
@@ -74,7 +77,7 @@ Done: this list contains all the finished items. <br>
     - As a librarian I want to be able to modify any data entry error <br>
     - As a librarian I want to be able to return borrowed book, so they become available for borrowing <br>
     - As a borrower I want to see the available books, so I can choose from them <br>
-    - As a librarian I want to see a list of late books, so I can take action <br>
+    - As a librarian I want to see a list of late books, so I can take action <br> <br>
 
  3.3 <b id=B3> Version Control </b> <br>
     git was used as the version control and the code was uploaded to github repository. The repository consists of many feature branches to separate the functionality.<br> 
@@ -87,9 +90,4 @@ Testing is a crucial part of software development. The pytest framework makes it
   
 <img src="figures/coverage.png" alt="Coverage report"> <br>
    
-    Entity Relationship Diagram (ERD).
-    A full CI/CD pipeline diagram.
-    An infrastructure diagram, illustrating the cloud resources and how they network together.
-    A component-level diagram, illustrating how the application interfaces with the database.
-
-Any future improvements you would make.
+    
