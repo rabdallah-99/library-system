@@ -43,12 +43,20 @@ Risk assessment : https://docs.google.com/spreadsheets/d/1HR6_C_aUr2cwk9Qm1NOSY2
 2. <b id=C4> Architecture </b> <br>
    2.1 <b id=C5 >Database Design </b> <br>
          
- <img src="analysis/a.png" alt="ERD mapping to tables" height="750" width="420"> 
+ <img src="analysis/a.png" alt="ERD mapping to tables" height="750" width="600"> 
 
 3. <b id=C7> Management and Version Control </b> <br>
     3.1 <b id=B2> Project Tracking </b> <br>
- <img src="figures/trello.png" alt=" Trello board"
-    3.2 <b id=B1> Use Cases </b<br>
+        Trello was used to keep track of what is done and what is still not complete as shown below. <br>
+ <img src="figures/trello.png" alt=" Trello board" > <br>
+ The board is divided into lists from left to right as the flow of the project : <br>
+Backlog: This list is the start of the project it contained all the items which should be done. <br>
+User stories: This list contained the functionality that is required to be performed which helps in the coding stage. <br>
+To Do : This list contains all items that need to be done but didn't start yet. <br>
+Doing:  This list contains all the open items which are currently under development. <br>
+Testing: This list contains the items which completed its development and waiting for their unit testing.
+Done: this list contains all the finished items. <br>
+    3.2 <b id=B1> Use Cases </b> <br>
    The below use cases were used to create the first MVP for the project <br>
     - As a librarian I want to be  able to add borrow transaction so that I keep log of borrowed books <br>
     - As a librarian I want to be able to add new books to the library so that they appear in the system <br>
@@ -56,12 +64,14 @@ Risk assessment : https://docs.google.com/spreadsheets/d/1HR6_C_aUr2cwk9Qm1NOSY2
     - As a librarian I want to be able to return borrowed book so they become available for borrowing <br>
     - As a borrower I want to see the available books so I can choose from them <br>
     - As a librarian I want to see a list of late books so I can take action <br>
- 
 
 
 4. <b id=C8> Risk Assessment </b> <br>
    The risk assessment is found on https://docs.google.com/spreadsheets/d/1HR6_C_aUr2cwk9Qm1NOSY2wIZ9z--q5OoUCK4qK1BbU/edit#gid=0, a screenshot is found below 
 <img src="figures/risk.png" alt="Risk Assessment"  >
+
+5. <b id=C9 > Testing </b> <br>
+   
     Entity Relationship Diagram (ERD).
     A full CI/CD pipeline diagram.
     An infrastructure diagram, illustrating the cloud resources and how they network together.
