@@ -19,8 +19,7 @@ Risk assessment : https://docs.google.com/spreadsheets/d/1HR6_C_aUr2cwk9Qm1NOSY2
     3.2 <a href="=#B1"> Use Cases </a> <br>
 4. <a href="#C8">Risk assessment </a> <br>
 5. Testing  <br>  report on the success and code coverage of your unit tests. <br>
-    Testing is a crucial part of software development. The pytest framework makes it easy to write small, readable tests,and can scale to support complex functional testing for applications and libraries.
-  <img src=""figures/coverage.png" alt="Coverage report"> <br>
+    
 6. 
 
 1.<b id=C1> Project Description and Requirements </b><br>
@@ -73,6 +72,8 @@ Done: this list contains all the finished items. <br>
 <img src="figures/risk.png" alt="Risk Assessment"  >
 
 5. <b id=C9 > Testing </b> <br>
+Testing is a crucial part of software development. The pytest framework makes it easy to write small, readable tests,and can scale to support complex functional testing for applications and libraries.
+  <img src="figures/coverage.png" alt="Coverage report"> <br>
    
     Entity Relationship Diagram (ERD).
     A full CI/CD pipeline diagram.
