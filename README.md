@@ -123,7 +123,7 @@ Testing is a crucial part of software development. The pytest framework makes it
 7. <b id=C11> Known issues </b><br>
    <p> I didn't manage to finish the login module so this website doesn't have any authentication method currently. I need to add more validation on data entry. Add Search feature
      The flask app container tends to break giving error " ModuleNotFoundError: No module named 'flask' " which I couldn't resolve so I'm attaching all the pipeline configuration and all other scripts i was going to use </p> <br>
-   <img src="jenkins.png" alt="jenkins output". >
+   <img src="figures/jenkins.png" alt="jenkins output". >
 8. <b id=C12> Author </b><br>
 Riham Ahmed 
 
