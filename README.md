@@ -3,6 +3,7 @@ a model for a school library system <br>
 <h2> Resources: </h2><br>
 Trello: https://trello.com/b/a3rDk7LC/library-system <br>
 github: https://github.com/rabdallah-99/library-system <br>
+Videos: https://www.dropbox.com/sh/mtvw2ef32b7lt78/AACQDV4TiaQlD_FI87mHaRgLa?dl=0  <br>
 Risk assessment : https://docs.google.com/spreadsheets/d/1HR6_C_aUr2cwk9Qm1NOSY2wIZ9z--q5OoUCK4qK1BbU/edit#gid=0 <br>
 
 <h2> Contents </h2> <br>
