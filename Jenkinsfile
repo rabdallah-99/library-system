@@ -24,9 +24,8 @@ pipeline {
 
     stage('RUN') {
       steps {
-        sh ' docker network create mynetwork '
-	    sh ' docker run -d --name mysql --network mynetwork databasemysql:8'
-	    sh 'docker run -d --name flask-app1  -p 5000:5000 --network mynetwork flask-library:latest'
+          sh 'docker swarm init '
+          sh 'docker stack deploy --compose-file docker-compose.yaml stack1'
         }
     }
     stage('Push') {
